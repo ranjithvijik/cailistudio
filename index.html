@@ -141,8 +141,10 @@
       <nav class="space-y-1 mb-8">
         <a href="#ecosystem" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Ecosystem</a>
         <a href="#personas" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Persona Compass</a>
+        <a href="#navigator" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Navigator Program</a>
         <a href="#workflows" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Workflows</a>
         <a href="#about" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">About CAILI</a>
+        <a href="#state-impact" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Policy Impact</a>
         <a href="#timeline" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">AI Timeline</a>
         <a href="#use-cases" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Use Cases</a>
         <a href="#ethics" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Responsible AI</a>
@@ -243,7 +245,8 @@
           <div class="flex flex-col sm:flex-row items-start gap-4">
             <a href="#personas" class="w-full sm:w-auto px-8 py-3.5 bg-[#40C1BB] hover:bg-[#35a8a2] text-[#011221] text-sm font-bold rounded-full shadow-navy hover:shadow-xl transition-all uppercase tracking-wider">Explore our AI Compass</a>
             <a href="#ecosystem" class="w-full sm:w-auto px-8 py-3.5 bg-transparent border-2 border-white/20 hover:border-white/40 text-white text-sm font-bold rounded-full hover:bg-white/5 transition-all uppercase tracking-wider">Explore the tool ecosystem</a>
-          </div>
+          
+              <div class="flex items-center gap-1 mt-2 text-[10px]"><span class="bg-sky-100 text-sky-700 px-1.5 py-0.5 rounded font-semibold">57%</span><span class="text-slate-400">use AI weekly in coursework &mdash; Lumina-Gallup 2026</span></div></div>
         </div>
 
         <!-- Hero Highlights Cards -->
@@ -288,6 +291,43 @@
       </div>
     </section>
 
+    <!-- National Context: Why CAILI, Why Now -->
+    <section class="py-16 bg-[#011221] text-white reveal">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">2026 National Context</p>
+          <h2 class="text-display-md md:text-display-lg font-black text-white uppercase tracking-tight mb-3">Why CAILI, Why Now</h2>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
+            <p class="text-4xl md:text-5xl font-black text-[#40C1BB]">92%</p>
+            <p class="text-sm text-white/80 mt-2">of students engaging with AI in 2026</p>
+            <p class="text-[10px] text-white/40 mt-1">up from 86% in 2024</p>
+          </div>
+          <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
+            <p class="text-4xl md:text-5xl font-black text-[#40C1BB]">80%</p>
+            <p class="text-sm text-white/80 mt-2">of universities lack formal AI policies</p>
+            <p class="text-[10px] text-white/40 mt-1">critical governance gap</p>
+          </div>
+          <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
+            <p class="text-4xl md:text-5xl font-black text-[#40C1BB]">73%</p>
+            <p class="text-sm text-white/80 mt-2">of faculty handling AI integrity issues</p>
+            <p class="text-[10px] text-white/40 mt-1">AAC&U, January 2026</p>
+          </div>
+          <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
+            <p class="text-4xl md:text-5xl font-black text-[#40C1BB]">1/5</p>
+            <p class="text-sm text-white/80 mt-2">students use AI in coursework daily</p>
+            <p class="text-[10px] text-white/40 mt-1">Lumina-Gallup 2026</p>
+          </div>
+        </div>
+        <div class="mt-8 text-center max-w-3xl mx-auto">
+          <p class="text-sm text-white/60 leading-relaxed">
+            <strong class="text-white">The CAILI Differentiator:</strong> While most institutions race to write policy after adoption, CAILI was architected from inception around a Community-Grounded Compass — making it Maryland's only interdisciplinary AI center bridging Law, Public Affairs, Business, and Arts &amp; Sciences.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Tool Ecosystem Section -->
     <section id="ecosystem" class="py-20 bg-white reveal">
       <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
@@ -312,10 +352,11 @@
                   <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Live Prototype</span>
                 </div>
                 <h4 class="text-lg font-bold text-slate-900 mb-2">ECON Simulator</h4>
-                <p class="text-sm text-slate-600 flex-1 mb-4">Interactive economics simulation for applied scenario testing, tradeoff analysis, and visual learning.</p>
+                <p class="text-sm text-slate-600 flex-1 mb-4">Interactive economics simulation featuring <strong class="text-slate-800">78 interactive modules</strong> with live data from the Federal Reserve Economic Database (FRED). Students manipulate variables and observe market equilibria shift in real-time.</p>
                 <div class="flex flex-wrap gap-2 mb-6">
-                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Scenario testing</span>
-                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Visual feedback</span>
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">78 modules</span>
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Live FRED data</span>
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Multi-agent</span>
                 </div>
                 <a href="https://main.difkww0p8da8o.amplifyapp.com/" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center w-full py-2.5 bg-[#011221] hover:bg-[#40C1BB] hover:text-[#011221] text-white text-sm font-bold rounded-lg transition-colors uppercase tracking-wider">Launch Simulator</a>
               </div>
@@ -326,11 +367,13 @@
                   <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Live Prototype</span>
                 </div>
                 <h4 class="text-lg font-bold text-slate-900 mb-2">ECON 606 Study Bot</h4>
-                <p class="text-sm text-slate-600 flex-1 mb-4">A course-specific study assistant for economics review, concept explanation, and exam prep.</p>
+                <p class="text-sm text-slate-600 flex-1 mb-4">A multi-agent AI system on BoodleBox coordinating <strong class="text-slate-800">Claude 4.6 Opus</strong> (Master Orchestrator), <strong class="text-slate-800">Gemini 3.1 Pro</strong> (financial math), <strong class="text-slate-800">ChatGPT 5.4</strong> (study materials), and <strong class="text-slate-800">Perplexity Pro</strong> (fact-checking). Strictly course-grounded - references only provided teaching materials.</p>
                 <div class="flex flex-wrap gap-2 mb-6">
-                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Concept review</span>
-                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Exam prep</span>
-                </div>
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Multi-agent</span>
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Course-grounded</span>
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Anti-hallucination</span>
+                
+              <div class="flex items-center gap-1 mt-2 text-[10px]"><span class="bg-sky-100 text-sky-700 px-1.5 py-0.5 rounded font-semibold">92%</span><span class="text-slate-400">of students actively engage with AI &mdash; 2026</span></div></div>
                 <a href="https://box.boodle.ai/a/@ECON606StudyBot" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center w-full py-2.5 bg-[#011221] hover:bg-[#40C1BB] hover:text-[#011221] text-white text-sm font-bold rounded-lg transition-colors uppercase tracking-wider">Open Study Bot</a>
               </div>
               <!-- Tool 3 -->
@@ -403,6 +446,10 @@
                   <div class="flex gap-2">
                      <a href="/ai-syllabi-policy-generator/" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-2.5 px-4 bg-[#011221] hover:bg-[#40C1BB] hover:text-[#011221] text-white text-sm font-bold rounded-lg transition-colors uppercase tracking-wider">Build Policy</a>
                   </div>
+                  <div class="mt-2 pt-2 border-t border-slate-100">
+                    <span class="bg-slate-100 text-slate-500 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">Built on National Standard</span>
+                    <p class="text-[10px] text-slate-400 mt-1">Implements the three-tier framework adopted by 83.3% of institutions (ASPPH 2026), uniquely integrating Baltimore's Community Engagement lens.</p>
+                  </div>
                 </div>
                 <div class="bg-slate-50 p-6 sm:w-1/3 border-t sm:border-t-0 sm:border-l border-slate-200">
                   <p class="text-xs font-bold uppercase text-slate-400 mb-3">Outcomes</p>
@@ -429,8 +476,9 @@
           <p class="text-slate-600 text-lg mb-6">
             According to the <strong>"Understanding Baltimore's AI Ecosystem" Report</strong>, successful AI adoption requires understanding stakeholders' lived experiences. We identified <strong>six distinct user personas</strong> across Baltimore.
           </p>
-          <div class="p-4 bg-white border border-slate-200 rounded-xl inline-block text-sm text-slate-600 text-left">
-            💡 Research conducted in partnership with <strong>Mindgrub</strong>, a Baltimore tech company with deep expertise in user research.
+          <div class="p-5 bg-white border border-slate-200 rounded-xl inline-flex items-center gap-3 text-sm text-slate-600 shadow-card">
+            <span class="text-lg">💡</span>
+            <span>Research conducted in partnership with <strong>Mindgrub</strong>, a Baltimore-based tech firm with deep expertise in user research. The Community-Grounded Compass was developed through structured interviews with Baltimore city officials, community leaders, data analysts, educators, and residents — ensuring the personas reflect lived experience, not assumptions.</span>
           </div>
         </div>
 
@@ -521,7 +569,8 @@
             <div class="mt-auto bg-slate-50 p-3 rounded-lg border border-slate-100">
               <p class="text-xs font-bold text-sky-700 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> CAILI Solution</p>
               <p class="text-xs text-slate-600 mt-1">Every CAILI tool is designed around the <strong>Integrity lens</strong>: course-grounded Study Bots limit responses to provided teaching materials with explicit references, preventing hallucination and keeping the student's reasoning at the center. <strong>BoodleBox Coach Mode</strong> develops metacognitive skills—students learn to question AI outputs, interrogate assumptions, and distinguish well-written from well-reasoned responses. Process files and conversation transcripts are submitted with assignments, ensuring the Adaptive Achiever's unique voice and critical thinking remain visible, not replaced.</p>
-            </div>
+            
+              <div class="flex items-center gap-1 mt-2 text-[10px]"><span class="bg-sky-100 text-sky-700 px-1.5 py-0.5 rounded font-semibold">65%</span><span class="text-slate-400">fear AI makes learning too shallow &mdash; DEC 2026</span></div></div>
           </div>
 
           <!-- Persona 4: Prudent Professor -->
@@ -579,7 +628,8 @@
             <div class="mt-auto bg-slate-50 p-3 rounded-lg border border-slate-100">
               <p class="text-xs font-bold text-amber-700 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> CAILI Solution</p>
               <p class="text-xs text-slate-600 mt-1">CAILI's <strong>Live Prototypes</strong>—from the ECON Simulator to the AI-Enabled Business Accelerator—demonstrate concrete, everyday value rather than abstract AI promises. The <strong>Community Lens</strong>, central to CAILI's 4-lens ethical framework, ensures every tool is designed <em>with</em> Baltimore communities, not <em>for</em> them. Free, unlimited BoodleBox access puts enterprise AI tools in the hands of every UBalt community member. The AI-Enabled Business Accelerator directly supports Baltimore entrepreneurs building ventures in healthcare, energy, housing, and education—proving AI can create opportunity, not just disruption.</p>
-            </div>
+            
+              <div class="flex items-center gap-1 mt-2 text-[10px]"><span class="bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-semibold">31%</span><span class="text-slate-400">of K-12 schools had AI policies as of Dec 2024</span></div></div>
           </div>
 
           <!-- Persona 6: Labor Guardian -->
@@ -608,7 +658,8 @@
             <div class="mt-auto bg-slate-50 p-3 rounded-lg border border-slate-100">
               <p class="text-xs font-bold text-pink-700 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg> CAILI Solution</p>
               <p class="text-xs text-slate-600 mt-1">CAILI's core philosophy is that AI should <strong>enhance—rather than replace—the educational experience</strong>. BoodleBox's transparency architecture (conversation transcripts, process files, faculty visibility) ensures every AI interaction is auditable. The <strong>4-lens ethical framework</strong> was designed with the Labor Guardian's concerns at the center: Integrity keeps human reasoning primary, Community puts Baltimore's workers in the problem, not outside it. The <strong>AI-Enabled Business Accelerator</strong> proves the model—supporting Baltimore founders who <em>create</em> jobs. CAILI treats AI as a collaborator, not a shortcut machine.</p>
-            </div>
+            
+              <div class="flex items-center gap-1 mt-2 text-[10px]"><span class="bg-pink-100 text-pink-700 px-1.5 py-0.5 rounded font-semibold">73%</span><span class="text-slate-400">of faculty handled AI integrity issues &mdash; AAC&amp;U Jan 2026</span></div></div>
           </div>
 
         </div>
@@ -649,6 +700,122 @@
       </div>
     </section>
 
+    <!-- Navigator Program -->
+    <section id="navigator" class="py-20 bg-white reveal">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">From Personas to Peer Networks</p>
+          <h2 class="text-display-md md:text-display-lg font-black text-slate-900 uppercase tracking-tight mb-3">The CAILI Navigator Model</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <p class="text-slate-600 text-lg leading-relaxed mb-6">The six Baltimore personas aren't just research artifacts — they are the foundation of CAILI's emerging <strong class="text-slate-900">Navigator Program</strong>, which embeds AI-fluent community members within their existing networks.</p>
+            <p class="text-slate-600 text-lg leading-relaxed mb-6">Rather than asking Baltimoreans to come to the university, navigators meet residents where they already are: in churches, libraries, recreation centers, small businesses, and labor halls.</p>
+            <blockquote class="border-l-4 border-[#40C1BB] pl-6 py-4 bg-slate-50 rounded-r-xl mb-6">
+              <p class="text-sm text-slate-700 italic leading-relaxed">"It's better to learn from peers. It's rare that we get out of our silos to learn and connect."</p>
+              <p class="text-xs text-slate-500 mt-2 font-semibold">&mdash; Dr. Jessica Stansbury, CAILI Director, as quoted in Technical.ly (June 10, 2026)</p>
+            </blockquote>
+            <p class="text-slate-600 text-base leading-relaxed">Trust travels through familiar relationships. By training peer navigators within each persona's community, CAILI converts ethical AI principles into lived, neighbor-to-neighbor practice.</p>
+          </div>
+          <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-4">Navigator Model — Community Entry Points</p>
+            <div class="space-y-4">
+              <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-card">
+                <div class="w-10 h-10 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center text-lg font-bold shrink-0">CC</div>
+                <div><strong class="text-sm text-slate-900">Civic Networks</strong><p class="text-xs text-slate-500">City agencies, data councils, neighborhood associations</p></div>
+              </div>
+              <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-card">
+                <div class="w-10 h-10 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center text-lg font-bold shrink-0">SS</div>
+                <div><strong class="text-sm text-slate-900">Student Peer Groups</strong><p class="text-xs text-slate-500">Study groups, career centers, MBA/Law/MPA cohorts</p></div>
+              </div>
+              <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-card">
+                <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-bold shrink-0">PP</div>
+                <div><strong class="text-sm text-slate-900">Faculty Cohorts</strong><p class="text-xs text-slate-500">AI Navigator Fellows, departmental PLCs</p></div>
+              </div>
+              <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-card">
+                <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-bold shrink-0">HH</div>
+                <div><strong class="text-sm text-slate-900">Community Hubs</strong><p class="text-xs text-slate-500">Libraries, rec centers, labor halls, churches</p></div>
+              </div>
+              <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-card">
+                <div class="w-10 h-10 rounded-lg bg-pink-100 text-pink-700 flex items-center justify-center text-lg font-bold shrink-0">LG</div>
+                <div><strong class="text-sm text-slate-900">Workplace Networks</strong><p class="text-xs text-slate-500">Unions, trade organizations, manufacturing floors</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Path Forward -->
+    <section class="py-20 bg-white reveal">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">From Research to Impact</p>
+          <h2 class="text-display-md md:text-display-lg font-black text-slate-900 uppercase tracking-tight mb-3">The Path Forward</h2>
+          <p class="text-slate-600 text-lg">CAILI's six Baltimore personas are not static research artifacts — they are a living operational framework that guides every decision. Here is how we activate them.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="rounded-2xl p-6 border border-emerald-100 bg-gradient-to-br from-emerald-50 to-white relative overflow-hidden">
+            <div class="text-4xl mb-4">✅</div>
+            <h3 class="text-xl font-black text-slate-900 mb-1">Phase 1</h3>
+            <p class="text-sm font-bold text-emerald-700 uppercase tracking-wider mb-3">Validate</p>
+            <p class="text-sm text-slate-600 leading-relaxed">Test the personas with the community. Run iterative workshops with each persona's real-world community: city agencies, faculty senates, non-traditional learner cohorts, trade unions, and labor advocacy groups. Refine the personas based on lived feedback.</p>
+          </div>
+          <div class="rounded-2xl p-6 border border-sky-100 bg-gradient-to-br from-sky-50 to-white relative overflow-hidden">
+            <div class="text-4xl mb-4">🧭</div>
+            <h3 class="text-xl font-black text-slate-900 mb-1">Phase 2</h3>
+            <p class="text-sm font-bold text-sky-700 uppercase tracking-wider mb-3">Navigate</p>
+            <p class="text-sm text-slate-600 leading-relaxed">Use personas to guide outreach and workforce planning. Deploy the <strong>CAILI Navigator Program</strong> — embedding AI-fluent peer experts within the communities each persona represents. Trust travels through familiar relationships.</p>
+          </div>
+          <div class="rounded-2xl p-6 border border-amber-100 bg-gradient-to-br from-amber-50 to-white relative overflow-hidden">
+            <div class="text-4xl mb-4">🌱</div>
+            <h3 class="text-xl font-black text-slate-900 mb-1">Phase 3</h3>
+            <p class="text-sm font-bold text-amber-700 uppercase tracking-wider mb-3">Evolve</p>
+            <p class="text-sm text-slate-600 leading-relaxed">Treat personas as a living framework. Update annually with new survey data, emerging AI capabilities, and community input. The framework grows with Baltimore — it does not freeze in 2026.</p>
+          </div>
+          <div class="rounded-2xl p-6 border border-purple-100 bg-gradient-to-br from-purple-50 to-white relative overflow-hidden">
+            <div class="text-4xl mb-4">🤝</div>
+            <h3 class="text-xl font-black text-slate-900 mb-1">Phase 4</h3>
+            <p class="text-sm font-bold text-purple-700 uppercase tracking-wider mb-3">Scale</p>
+            <p class="text-sm text-slate-600 leading-relaxed">Bridge persona insights into state-level policy. Through Maryland's <strong>SB597 AI Partnership</strong> and CAILI's proposed role as a Technology Extension Hub, scale persona-informed AI literacy beyond Baltimore to communities statewide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Baltimore AI Ecosystem -->
+    <section id="ecosystem-map" class="py-20 bg-slate-50 reveal border-y border-slate-200">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">Where CAILI Connects</p>
+          <h2 class="text-display-md md:text-display-lg font-black text-slate-900 uppercase tracking-tight mb-3">Baltimore AI Ecosystem</h2>
+          <p class="text-slate-600 text-lg">CAILI doesn't compete with Baltimore's AI ecosystem — it connects it. As the only academic center bridging Law, Public Affairs, Business, and Arts &amp; Sciences, CAILI provides the ethical scaffolding and research foundation that healthcare accelerators, city-led equity labs, and industry partners all need.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-white p-5 rounded-xl shadow-card border border-slate-100">
+            <div class="text-xs font-bold text-[#40C1BB] uppercase tracking-wider mb-2">🏥 Healthcare AI</div>
+            <h4 class="text-sm font-bold text-slate-900 mb-1">Techstars AI Health Baltimore</h4>
+            <p class="text-xs text-slate-500">Healthcare AI startups anchored by Johns Hopkins. CAILI serves as academic &amp; ethical R&amp;D partner.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl shadow-card border border-slate-100">
+            <div class="text-xs font-bold text-[#40C1BB] uppercase tracking-wider mb-2">📱 Digital Equity</div>
+            <h4 class="text-sm font-bold text-slate-900 mb-1">Mayor Scott + NWN + Intel AI Lab</h4>
+            <p class="text-xs text-slate-500">Youth &amp; senior digital equity programs. CAILI's persona research informs culturally responsive curricula.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl shadow-card border border-slate-100">
+            <div class="text-xs font-bold text-[#40C1BB] uppercase tracking-wider mb-2">🔬 Research Partner</div>
+            <h4 class="text-sm font-bold text-slate-900 mb-1">Mindgrub Technologies</h4>
+            <p class="text-xs text-slate-500">Inc. 5000 industry tech consultancy co-developed the Community-Grounded Compass with CAILI.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl shadow-card border border-slate-100">
+            <div class="text-xs font-bold text-[#40C1BB] uppercase tracking-wider mb-2">🏛️ State Infrastructure</div>
+            <h4 class="text-sm font-bold text-slate-900 mb-1">Maryland AI Partnership (SB597)</h4>
+            <p class="text-xs text-slate-500">CAILI is proposed as a Technology Extension Hub providing ethical AI deployment statewide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Workflows (BoodleBox) Section -->
     <section id="workflows" class="py-20 bg-white reveal">
       <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
@@ -663,6 +830,10 @@
             <p class="text-slate-600 text-lg mb-8 leading-relaxed">
               BoodleBox provides UBalt with <strong>free, unlimited access</strong> to leading AI models&mdash;GPT-4o, Claude, Gemini, Perplexity, and more&mdash;through a single, secure, FERPA-compliant platform. As the <strong>Collaborative AI Platform for Lifelong Learning and Work</strong>, BoodleBox combines multi-model access with Coach Mode for AI literacy development, custom AI assistants, and enterprise-grade security. CAILI adds the missing layer: course-specific tools, faculty enablement workflows, and shared collaborative patterns that turn access into adoption.
             </p>
+            <blockquote class="border-l-4 border-[#40C1BB] pl-6 py-4 mb-8 bg-slate-50 rounded-r-xl">
+              <p class="text-sm text-slate-700 italic leading-relaxed">"Teaching AI fluency transcends single-tool mastery. It's about understanding the ecosystem of AI engines and developing the judgment to know what, when, how, and why to deploy them&mdash;ultimately enhancing our human capacity for innovation. BoodleBox transforms this possibility into reality."</p>
+              <p class="text-xs text-slate-500 mt-2 font-semibold">&mdash; Dr. Jessica Stansbury, Founding Director, CAILI</p>
+            </blockquote>
             <ul class="space-y-6">
               <li class="flex gap-4">
                 <div class="w-10 h-10 rounded-full bg-[#40C1BB]/20 text-[#40C1BB] flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16M12 4v16M7 7h10v10H7Z"/></svg></div>
@@ -760,6 +931,45 @@
           </div>
         </div>
 
+        <!-- Research Impact -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-bold text-slate-900 mb-4 text-center">CAILI Research in the Public Conversation</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-white rounded-xl p-5 shadow-card border border-slate-100 flex items-start gap-3">
+              <div class="text-xl shrink-0">📰</div>
+              <div>
+                <p class="text-[10px] text-[#40C1BB] font-bold uppercase tracking-wider">June 10, 2026</p>
+                <p class="text-xs text-slate-700 font-medium">Technical.ly Feature</p>
+                <p class="text-[10px] text-slate-500">"UBalt's AI Personas Could Help Baltimore Meet Residents Where They Are"</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-card border border-slate-100 flex items-start gap-3">
+              <div class="text-xl shrink-0">🏛️</div>
+              <div>
+                <p class="text-[10px] text-[#40C1BB] font-bold uppercase tracking-wider">March 11, 2026</p>
+                <p class="text-xs text-slate-700 font-medium">Maryland Senate Testimony</p>
+                <p class="text-[10px] text-slate-500">SB597 Maryland AI Partnership — Dr. Stansbury testifies before Senate Committee</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-card border border-slate-100 flex items-start gap-3">
+              <div class="text-xl shrink-0">🎓</div>
+              <div>
+                <p class="text-[10px] text-[#40C1BB] font-bold uppercase tracking-wider">2024–2025</p>
+                <p class="text-xs text-slate-700 font-medium">AI Summit Presentations</p>
+                <p class="text-[10px] text-slate-500">Inaugural &amp; 2nd Annual Summits featuring Maryland leadership and community organizations</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-card border border-slate-100 flex items-start gap-3">
+              <div class="text-xl shrink-0">📚</div>
+              <div>
+                <p class="text-[10px] text-[#40C1BB] font-bold uppercase tracking-wider">Fall 2024</p>
+                <p class="text-xs text-slate-700 font-medium">OER Pressbooks Publication</p>
+                <p class="text-[10px] text-slate-500">"From Chalkboards to Chatbots" — self-paced AI literacy courses available in Canvas and Pressbooks</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- What We Offer -->
         <div class="mb-12">
           <h3 class="text-2xl font-bold text-slate-900 mb-2 text-center">What We Offer</h3>
@@ -804,6 +1014,66 @@
         <div class="inline-flex flex-col sm:flex-row items-center gap-4 bg-white/10 p-4 rounded-xl border border-white/10">
           <span class="text-[#40C1BB] font-bold uppercase text-xs tracking-wider">Now Surfacing:</span>
           <span id="banner-rotator-text" class="text-white/80 font-medium transition-opacity duration-300">"Understanding Baltimore's AI Ecosystem" persona report with Mindgrub</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- State-Level Impact -->
+    <section id="state-impact" class="py-16 bg-slate-50 reveal border-y border-slate-200">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">State-Level Policy Impact</p>
+          <h2 class="text-display-md md:text-display-lg font-black text-slate-900 uppercase tracking-tight mb-3">From Campus to Capitol</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-2xl shadow-card border border-slate-100">
+            <div class="w-10 h-10 rounded-lg bg-[#40C1BB]/20 text-[#40C1BB] flex items-center justify-center mb-4 text-lg">🏛️</div>
+            <h4 class="text-sm font-bold text-slate-900 mb-2">SB597 — Maryland AI Partnership</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">March 11, 2026: Dr. Jessica Stansbury delivered favorable testimony before the Maryland Senate Education, Energy and the Environment Committee in support of Senate Bill 597, establishing the Maryland Artificial Intelligence Partnership.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-card border border-slate-100">
+            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4 text-lg">🔬</div>
+            <h4 class="text-sm font-bold text-slate-900 mb-2">Technology Extension Hub</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">CAILI is positioned to serve as a Maryland Technology Extension Hub, extending its proven AI literacy model to small businesses and communities statewide — not merely a campus center but state-level infrastructure for ethical AI deployment.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-card border border-slate-100">
+            <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center mb-4 text-lg">🌐</div>
+            <h4 class="text-sm font-bold text-slate-900 mb-2">AI in Practice Webinar Series</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Cross-institutional collaboration with Johns Hopkins University, UMBC, and the Center for Innovation &amp; Entrepreneurship, featuring industry experts and faculty-led discussions on real-world AI applications.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI-Enabled Business Accelerator: 8 Companies -->
+    <section class="py-20 bg-white reveal">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">Commercial Acceleration</p>
+          <h2 class="text-display-md md:text-display-lg font-black text-slate-900 uppercase tracking-tight mb-3">AI-Enabled Business Accelerator</h2>
+          <p class="text-slate-600 text-lg">An intensive nine-week program (Jan–Mar 2026) launched by UBalt's Center for Entrepreneurship and Innovation in partnership with TEDCO. Eight Baltimore-based startups applying AI to critical civic and commercial sectors.</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse rounded-xl overflow-hidden shadow-card">
+            <thead>
+              <tr class="bg-[#011221] text-white">
+                <th class="p-3 text-left font-bold uppercase tracking-wider text-xs">Venture</th>
+                <th class="p-3 text-left font-bold uppercase tracking-wider text-xs hidden sm:table-cell">Founder</th>
+                <th class="p-3 text-left font-bold uppercase tracking-wider text-xs hidden sm:table-cell">Sector</th>
+                <th class="p-3 text-left font-bold uppercase tracking-wider text-xs">Technology &amp; Impact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100"><td class="p-3 font-bold text-slate-900">HealthLink360</td><td class="p-3 text-slate-600 hidden sm:table-cell">Kenneth Watson Jr.</td><td class="p-3 hidden sm:table-cell"><span class="bg-sky-100 text-sky-700 text-[10px] px-2 py-0.5 rounded font-semibold">Healthcare</span></td><td class="p-3 text-slate-500 text-xs">Preventive health platform using biometric analysis and digital twins to detect early metabolic risks in underserved communities.</td></tr>
+              <tr class="border-b border-slate-100 bg-slate-50"><td class="p-3 font-bold text-slate-900">SphereHub</td><td class="p-3 text-slate-600 hidden sm:table-cell">Hamza Umar</td><td class="p-3 hidden sm:table-cell"><span class="bg-amber-100 text-amber-700 text-[10px] px-2 py-0.5 rounded font-semibold">Housing</span></td><td class="p-3 text-slate-500 text-xs">AI-driven housing platform using verified matching algorithms to pair commuting and international students with compatible roommates and safe off-campus housing.</td></tr>
+              <tr class="border-b border-slate-100"><td class="p-3 font-bold text-slate-900">Alektra, Inc.</td><td class="p-3 text-slate-600 hidden sm:table-cell">Jiaqun Wang</td><td class="p-3 hidden sm:table-cell"><span class="bg-emerald-100 text-emerald-700 text-[10px] px-2 py-0.5 rounded font-semibold">Energy</span></td><td class="p-3 text-slate-500 text-xs">Predictive market intelligence platform providing forecasting and optimization algorithms to manage volatile power markets.</td></tr>
+              <tr class="border-b border-slate-100 bg-slate-50"><td class="p-3 font-bold text-slate-900">NextGenEdu</td><td class="p-3 text-slate-600 hidden sm:table-cell">Amber Johnson Avery</td><td class="p-3 hidden sm:table-cell"><span class="bg-purple-100 text-purple-700 text-[10px] px-2 py-0.5 rounded font-semibold">Education</span></td><td class="p-3 text-slate-500 text-xs">AI-enabled career discovery companion with "deep memory" identifying behavioral patterns to guide students toward personalized career pathways.</td></tr>
+              <tr class="border-b border-slate-100"><td class="p-3 font-bold text-slate-900">BrickRose Exchange</td><td class="p-3 text-slate-600 hidden sm:table-cell">Bianca Jackson</td><td class="p-3 hidden sm:table-cell"><span class="bg-rose-100 text-rose-700 text-[10px] px-2 py-0.5 rounded font-semibold">Business</span></td><td class="p-3 text-slate-500 text-xs">Automation and systems strategy firm building customized virtual learning frameworks for micro and small businesses to audit inefficiencies and integrate AI securely.</td></tr>
+              <tr class="border-b border-slate-100 bg-slate-50"><td class="p-3 font-bold text-slate-900">Stacks Data</td><td class="p-3 text-slate-600 hidden sm:table-cell">Scott Kaufman</td><td class="p-3 hidden sm:table-cell"><span class="bg-indigo-100 text-indigo-700 text-[10px] px-2 py-0.5 rounded font-semibold">Compliance</span></td><td class="p-3 text-slate-500 text-xs">B2B software platform automating data collection and encrypting stakeholder sharing to streamline global supply chain compliance and sustainability reporting.</td></tr>
+              <tr class="border-b border-slate-100"><td class="p-3 font-bold text-slate-900">Pulse (AI Sharp Index)</td><td class="p-3 text-slate-600 hidden sm:table-cell">Romane Sharp</td><td class="p-3 hidden sm:table-cell"><span class="bg-pink-100 text-pink-700 text-[10px] px-2 py-0.5 rounded font-semibold">Health</span></td><td class="p-3 text-slate-500 text-xs">AI-powered platform detecting early signals of relapse risk by identifying critical patterns across disjointed clinical care networks.</td></tr>
+              <tr class="bg-slate-50"><td class="p-3 font-bold text-slate-900">Sommos</td><td class="p-3 text-slate-600 hidden sm:table-cell">Nicole Foster</td><td class="p-3 hidden sm:table-cell"><span class="bg-orange-100 text-orange-700 text-[10px] px-2 py-0.5 rounded font-semibold">Family</span></td><td class="p-3 text-slate-500 text-xs">AI-native generational archive platform. Uses daily voice-prompts ("Sparks") to capture memories, unwritten recipes, and family history across generations.</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -922,22 +1192,77 @@
           <div class="bg-white rounded-2xl p-6 shadow-card border border-emerald-100 hover:-translate-y-1 transition-transform">
             <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5c4 0 7 2.5 7 6.5S16 18 12 19c-4-1-7-3.5-7-7.5S8 5 12 5Z"/></svg></div>
             <h3 class="font-bold text-slate-900 mb-2">Fairness &amp; Equity</h3>
-            <p class="text-sm text-slate-600">Check for missing voices, uneven impact, and untested assumptions. Use AI to widen perspective—not narrow it. <em class="text-emerald-600">Driven by the Civic Champion persona, informed by the Community-Grounded Compass research with Mindgrub.</em></p>
+            <p class="text-sm text-slate-600 mb-2">Check for missing voices, uneven impact, and untested assumptions. Use AI to widen perspective—not narrow it.</p>
+            <div class="flex items-center gap-1.5 text-[10px] text-slate-400">
+              <span class="bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded">2026 ACSES Framework</span>
+              <span class="text-slate-300">|</span>
+              <span class="text-slate-400">Driven by Civic Champion</span>
+            </div>
           </div>
           <div class="bg-white rounded-2xl p-6 shadow-card border border-blue-100 hover:-translate-y-1 transition-transform">
             <div class="w-12 h-12 bg-blue-50 text-[#40C1BB] rounded-xl flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4 5 8v4c0 4 2.8 7 7 8 4.2-1 7-4 7-8V8l-7-4Z"/></svg></div>
             <h3 class="font-bold text-slate-900 mb-2">Transparency</h3>
-            <p class="text-sm text-slate-600">Show sources, disclose AI support, and make limits visible. Every CAILI Study Bot cites exactly which teaching materials inform its responses—no black boxes. <em class="text-[#40C1BB]">Essential for the Prudent Professor.</em></p>
+            <p class="text-sm text-slate-600 mb-2">Show sources, disclose AI support, and make limits visible. Every CAILI Study Bot cites exactly which teaching materials inform its responses—no black boxes.</p>
+            <div class="flex items-center gap-1.5 text-[10px] text-slate-400">
+              <span class="bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded">EDUCAUSE 2025</span>
+              <span class="text-slate-300">|</span>
+              <span class="text-slate-400">Essential for Prudent Professor</span>
+            </div>
           </div>
           <div class="bg-white rounded-2xl p-6 shadow-card border border-amber-100 hover:-translate-y-1 transition-transform">
             <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 5h10v14H7V5Zm3 4h4m-4 4h4m-4 4h2"/></svg></div>
             <h3 class="font-bold text-slate-900 mb-2">Academic Integrity</h3>
-            <p class="text-sm text-slate-600">Let AI support structure while your own reasoning does the work. BoodleBox's process-file submission and Coach Mode make AI use visible and auditable. <em class="text-amber-600">Guarded by the Adaptive Achiever's insistence on keeping human reasoning primary.</em></p>
+            <p class="text-sm text-slate-600 mb-2">Let AI support structure while your own reasoning does the work. BoodleBox's process-file submission and Coach Mode make AI use visible and auditable.</p>
+            <div class="flex items-center gap-1.5 text-[10px] text-slate-400">
+              <span class="bg-amber-50 text-amber-700 px-1.5 py-0.5 rounded">AAC&amp;U Jan 2026</span>
+              <span class="text-slate-300">|</span>
+              <span class="text-slate-400">Guarded by Adaptive Achiever</span>
+            </div>
           </div>
           <div class="bg-white rounded-2xl p-6 shadow-card border border-pink-100 hover:-translate-y-1 transition-transform">
             <div class="w-12 h-12 bg-pink-50 text-pink-600 rounded-xl flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm8 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM4 18a4 4 0 0 1 8 0M12 18a4 4 0 0 1 8 0"/></svg></div>
             <h3 class="font-bold text-slate-900 mb-2">Community Engagement</h3>
-            <p class="text-sm text-slate-600">Use AI in ways that strengthen trust, social mobility, and real partnership. The Community Lens—central to CAILI's 4-lens framework—ensures tools are built with communities, not just for them. <em class="text-pink-600">Voiced by the Hometown Hero &amp; Labor Guardian.</em></p>
+            <p class="text-sm text-slate-600 mb-2">Use AI in ways that strengthen trust, social mobility, and real partnership. The Community Lens ensures tools are built with communities, not just for them.</p>
+            <div class="flex items-center gap-1.5 text-[10px] text-slate-400">
+              <span class="bg-pink-50 text-pink-700 px-1.5 py-0.5 rounded">Stansbury 2025</span>
+              <span class="text-slate-300">|</span>
+              <span class="text-slate-400">Voiced by Hometown Hero &amp; Labor Guardian</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transparency Disclosure Ladder -->
+        <div class="mb-16">
+          <div class="bg-blue-50 rounded-2xl p-8 border border-blue-100">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-2xl">🪜</span>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">CAILI's Transparency Disclosure Ladder</h3>
+                <p class="text-sm text-slate-500">Informed by the EDUCAUSE 4-Level GenAI Transparency Framework (Damm &amp; Eaton, 2026). <strong class="text-slate-700">CAILI operates at Levels 3–4 while most institutions are at Level 1.</strong></p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div class="bg-white p-4 rounded-xl border border-blue-100 opacity-60">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Level 1: Awareness</span>
+                <p class="text-xs text-slate-500 mt-1">Acknowledge AI was used</p>
+                <span class="text-[10px] text-slate-400 mt-1 block">Baseline for all CAILI tools</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-blue-100 opacity-60">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Level 2: Attribution</span>
+                <p class="text-xs text-slate-500 mt-1">Name the specific tool used</p>
+                <span class="text-[10px] text-slate-400 mt-1 block">Built-in disclosure prompts</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-emerald-200 ring-1 ring-emerald-300">
+                <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-wider">Level 3: Process Doc</span>
+                <p class="text-xs text-slate-700 mt-1 font-semibold">Submit conversation transcripts</p>
+                <span class="text-[10px] text-emerald-600 mt-1 block">✅ Core to CAILI's process-file model</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-emerald-200 ring-1 ring-emerald-300">
+                <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-wider">Level 4: Reproducibility</span>
+                <p class="text-xs text-slate-700 mt-1 font-semibold">Document prompts + iterations</p>
+                <span class="text-[10px] text-emerald-600 mt-1 block">✅ Coach Mode artifacts</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1001,6 +1326,50 @@
               <h4 class="text-sm font-bold text-slate-900 mb-1">Support Multiple Modalities</h4>
               <p class="text-xs text-slate-600">Assessments don't need to be papers. Encourage multimedia, presentations, portfolios, or real-world applications like PSAs or client briefs—formats that require skills AI can't replicate.</p>
             </div>
+          </div>
+        </div>
+
+        <!-- AI Assessment Scale Detailed Table -->
+        <div class="mb-10">
+          <h4 class="text-xl font-bold text-slate-900 mb-2 text-center">AI Assessment Scale (AIAS) — Tiers of Integration</h4>
+          <p class="text-center text-slate-500 text-sm mb-6">Endorsed by UNESCO, used by schools and universities worldwide to set shared expectations between faculty and students.</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse rounded-xl overflow-hidden shadow-card">
+              <thead>
+                <tr class="bg-[#011221] text-white">
+                  <th class="p-3 text-left font-bold uppercase tracking-wider text-xs w-12">Tier</th>
+                  <th class="p-3 text-left font-bold uppercase tracking-wider text-xs">AI Use Level</th>
+                  <th class="p-3 text-left font-bold uppercase tracking-wider text-xs hidden md:table-cell">Pedagogical Strategy</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-slate-100">
+                  <td class="p-3 font-black text-lg text-slate-900">1</td>
+                  <td class="p-3"><strong class="text-slate-900">No AI</strong> — Unaided critical analysis only</td>
+                  <td class="p-3 text-slate-500 hidden md:table-cell">Traditional assessments focusing on foundational recall</td>
+                </tr>
+                <tr class="border-b border-slate-100 bg-slate-50">
+                  <td class="p-3 font-black text-lg text-slate-900">2</td>
+                  <td class="p-3"><strong class="text-slate-900">AI for Ideation</strong> — Brainstorming, outlining</td>
+                  <td class="p-3 text-slate-500 hidden md:table-cell">Students explore perspectives before drafting independently</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <td class="p-3 font-black text-lg text-slate-900">3</td>
+                  <td class="p-3"><strong class="text-slate-900">AI for Editing</strong> — Grammar, structure, coherence</td>
+                  <td class="p-3 text-slate-500 hidden md:table-cell">Original drafts then refined with AI for clarity</td>
+                </tr>
+                <tr class="border-b border-slate-100 bg-slate-50">
+                  <td class="p-3 font-black text-lg text-slate-900">4</td>
+                  <td class="p-3"><strong class="text-slate-900">AI Collaboration</strong> — Human revision of AI drafts</td>
+                  <td class="p-3 text-slate-500 hidden md:table-cell">Critical interrogation and verification of AI-generated content</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-black text-lg text-[#40C1BB]">5</td>
+                  <td class="p-3"><strong class="text-[#40C1BB]">Full AI Collaboration</strong> — Student orchestrates AI outputs</td>
+                  <td class="p-3 text-slate-500 hidden md:table-cell">Prompt engineering and managing multi-agent workflows</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -1093,9 +1462,15 @@
           </div>
           <div class="relative pl-14 sm:pl-16 py-4">
             <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">March 11, 2026</p>
+            <h4 class="text-lg font-bold text-slate-900">SB597 Testimony: Maryland AI Partnership</h4>
+            <p class="text-sm text-slate-600 mt-1">Dr. Stansbury delivers favorable testimony supporting Senate Bill 597 before the Maryland Senate Education, Energy and the Environment Committee, positioning CAILI as a state-level technology extension hub.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
             <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">January&ndash;March 2026</p>
             <h4 class="text-lg font-bold text-slate-900">AI-Enabled Business Accelerator</h4>
-            <p class="text-sm text-slate-600 mt-1">Inaugural cohort of 8 Baltimore entrepreneurs applying AI across healthcare, energy, education, housing, and small business. Partners: Techstars, Conscious Venture Lab.</p>
+            <p class="text-sm text-slate-600 mt-1">Inaugural cohort of 8 Baltimore entrepreneurs applying AI across healthcare, energy, education, housing, and small business. Launched in partnership with <strong>TEDCO</strong>, UBalt's Center for Entrepreneurship and Innovation, and supported by entrepreneurs-in-residence including Jason Michael Perry.</p>
           </div>
           <div class="relative pl-14 sm:pl-16 py-4">
             <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
@@ -1113,7 +1488,7 @@
             <div class="absolute left-[18px] top-5 w-4 h-4 bg-[#40C1BB] border-4 border-[#40C1BB]/30 rounded-full z-10"></div>
             <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">June 4, 2026</p>
             <h4 class="text-lg font-bold text-slate-900">3rd Annual AI Summit: "Building Baltimore's AI Future"</h4>
-            <p class="text-sm text-slate-600 mt-1">Citywide convening featuring the "Understanding Baltimore's AI Ecosystem" persona report with Mindgrub. Cross-sector dialogue on positioning Baltimore as a leading AI city.</p>
+            <p class="text-sm text-slate-600 mt-1">Citywide convening at the John and Frances Angelos Law Center. Opening remarks by <strong>Maryland Lt. Governor Aruna Miller</strong>, strategic discussions led by <strong>Baltimore City Council President Zeke Cohen</strong>, <strong>Maryland Secretary of Labor Portia Wu</strong>, and <strong>Dr. Amen Ra Mashariki</strong> (Bezos Earth Fund). Concurrent town halls translating personas into civic domains.</p>
           </div>
           <div class="relative pl-14 sm:pl-16 py-4">
             <div class="absolute left-[18px] top-5 w-4 h-4 bg-[#40C1BB] border-4 border-[#40C1BB]/30 rounded-full z-10"></div>
@@ -1262,6 +1637,7 @@
     if(rotatorText) {
       const messages = [
         "\"Understanding Baltimore's AI Ecosystem\" persona report",
+        "SB597 Maryland AI Partnership testimony",
         "ECON and OPM classroom simulations",
         "Course-specific study support for MBA learners",
         "Faculty-ready instructions for BoodleBox classrooms",
