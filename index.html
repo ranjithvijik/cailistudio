@@ -1,0 +1,1306 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAILI AI Studio & Community Compass | University of Baltimore</title>
+  <meta name="description" content="CAILI AI Studio is the University of Baltimore's working ecosystem for course-specific AI tools, faculty workflows, builder agents, and responsible classroom adoption.">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ubalt: {
+              navy:  '#011221',
+              teal:  '#40C1BB',
+              light: '#F5F7FA',
+              gray:  '#4A5568',
+              footer: '#e8f8f7',
+            },
+            persona: {
+              active: { bg: '#e0f2fe', text: '#0369a1', border: '#bae6fd' },
+              hesitant: { bg: '#fef08a', text: '#854d0e', border: '#fde68a' },
+              resister: { bg: '#fce7f3', text: '#be185d', border: '#fbcfe8' }
+            }
+          },
+          fontSize: {
+            'display-xl': ['7rem', { lineHeight: '0.95', letterSpacing: '-0.03em', fontWeight: '900' }],
+            'display-lg': ['5rem', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '900' }],
+            'display-md': ['3.5rem', { lineHeight: '1.05', letterSpacing: '-0.02em', fontWeight: '900' }],
+          },
+          boxShadow: {
+            'card': '0 1px 3px rgba(0, 0, 0, 0.04)',
+            'card-hover': '0 4px 12px rgba(0, 0, 0, 0.06)',
+            'navy': '0 20px 60px -20px rgba(1, 18, 33, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom CSS for specific interactive elements and animations */
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #40C1BB 0%, #5EEAD4 50%, #2DD4BF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .browser-mockup {
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+      border: 1px solid #e5e7eb;
+      background: #fff;
+    }
+    
+    /* Timeline styling */
+    .timeline-line::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 24px;
+      width: 3px;
+      background: linear-gradient(to bottom, #40C1BB, #011221);
+      border-radius: 4px;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="font-sans text-slate-800 bg-white antialiased selection:bg-[#40C1BB]/20 selection:text-[#011221]" id="top">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-[#40C1BB] text-[#011221] px-4 py-2 rounded-md z-50 font-bold">Skip to main content</a>
+
+  <!-- UBalt Official-Style Header -->
+  <header class="fixed w-full top-0 z-40 bg-[#011221]">
+    <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+      <div class="flex items-center justify-between" style="height:66px">
+        <!-- Logo — matches UBalt's main-header__logo -->
+        <a href="#top" class="flex items-center shrink-0">
+          <picture>
+            <source media="(min-width:700px)" srcset="public/logo/logo-university-of-baltimore.png">
+            <img src="public/logo/logo-university-of-baltimore.png" onerror="this.src='https://placehold.co/200x40/011221/ffffff?text=University+of+Baltimore'" alt="University of Baltimore" class="h-10 w-auto brightness-0 invert">
+          </picture>
+        </a>
+
+        <!-- Right side: search (46px) + MENU button — matches UBalt exactly -->
+        <div class="flex items-center">
+          <button type="button" class="text-white hover:text-[#40C1BB] transition-colors p-3" aria-label="Open search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 30 31" fill="none">
+              <path d="M14.66 21.64c3.95 0 7.16-3.21 7.16-7.16s-3.21-7.16-7.16-7.16-7.16 3.21-7.16 7.16 3.21 7.16 7.16 7.16z" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M24.59 24.36l-4.77-4.77" stroke="currentColor" stroke-width="2.5"/>
+            </svg>
+          </button>
+          <button id="nav-toggle" class="flex items-center gap-3 text-white hover:text-[#40C1BB] transition-colors uppercase font-black text-2xl tracking-tight px-7 py-4" aria-expanded="false" aria-controls="mega-menu">
+            <span class="hidden sm:inline">Menu</span>
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mega Menu Overlay -->
+  <div id="nav-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+  <div id="mega-menu" class="fixed top-0 right-0 h-full w-full max-w-lg bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl overflow-y-auto">
+    <div class="bg-[#011221] text-white px-6 py-5 flex items-center justify-between sticky top-0 z-10">
+      <div>
+        <p class="text-[#40C1BB] text-xs font-bold uppercase tracking-widest">University of Baltimore</p>
+        <p class="text-sm font-semibold mt-0.5">CAILI AI Studio</p>
+      </div>
+      <button id="nav-close" class="p-2 text-white/70 hover:text-white transition-colors" aria-label="Close menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="p-6">
+      <!-- CAILI Studio Links -->
+      <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-3">CAILI Studio</p>
+      <nav class="space-y-1 mb-8">
+        <a href="#ecosystem" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Ecosystem</a>
+        <a href="#personas" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Persona Compass</a>
+        <a href="#workflows" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Workflows</a>
+        <a href="#about" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">About CAILI</a>
+        <a href="#timeline" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">AI Timeline</a>
+        <a href="#use-cases" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Use Cases</a>
+        <a href="#ethics" class="nav-link flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 text-slate-800 font-medium text-sm transition-colors">Responsible AI</a>
+      </nav>
+
+      <!-- UBalt Main Nav Links -->
+      <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-3">University of Baltimore</p>
+      <nav class="space-y-2 mb-8">
+        <!-- Academics -->
+        <details class="group">
+          <summary class="flex items-center justify-between p-3 rounded-lg cursor-pointer hover:bg-slate-50 text-slate-800 font-medium text-sm list-none">Academics <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+          <div class="ml-4 mt-1 space-y-1 pb-2">
+            <a href="https://www.ubalt.edu/academics/explore-all-programs/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Explore All Programs</a>
+            <a href="https://www.ubalt.edu/academics/undergraduate-academics/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Undergrad Academics</a>
+            <a href="https://www.ubalt.edu/academics/graduate-academics/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Graduate Academics</a>
+            <a href="https://www.ubalt.edu/academics/learn-online-at-ubalt/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Learn Online</a>
+          </div>
+        </details>
+        <!-- Admission & Aid -->
+        <details class="group">
+          <summary class="flex items-center justify-between p-3 rounded-lg cursor-pointer hover:bg-slate-50 text-slate-800 font-medium text-sm list-none">Admission &amp; Aid <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+          <div class="ml-4 mt-1 space-y-1 pb-2">
+            <a href="https://www.ubalt.edu/admission-and-aid/undergraduate-admissions/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Undergraduate Admission</a>
+            <a href="https://www.ubalt.edu/admission-and-aid/graduate-admissions/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Graduate Admission</a>
+            <a href="https://www.ubalt.edu/admission-and-aid/tuition-and-fees/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Tuition &amp; Fees</a>
+            <a href="https://www.ubalt.edu/admission-and-aid/financial-aid/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Financial Aid</a>
+          </div>
+        </details>
+        <!-- Student Life -->
+        <details class="group">
+          <summary class="flex items-center justify-between p-3 rounded-lg cursor-pointer hover:bg-slate-50 text-slate-800 font-medium text-sm list-none">Student Life <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+          <div class="ml-4 mt-1 space-y-1 pb-2">
+            <a href="https://www.ubalt.edu/student-life/get-involved/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Get Involved</a>
+            <a href="https://www.ubalt.edu/student-life/housing.cfm" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Housing</a>
+            <a href="https://www.ubalt.edu/student-life/student-support/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Student Support</a>
+          </div>
+        </details>
+        <!-- About -->
+        <details class="group">
+          <summary class="flex items-center justify-between p-3 rounded-lg cursor-pointer hover:bg-slate-50 text-slate-800 font-medium text-sm list-none">About UBalt <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+          <div class="ml-4 mt-1 space-y-1 pb-2">
+            <a href="https://www.ubalt.edu/about/mission-and-strategic-plan.cfm" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Mission &amp; Strategic Plan</a>
+            <a href="https://www.ubalt.edu/about/why-ubalt.cfm" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Why UBalt?</a>
+            <a href="https://www.ubalt.edu/about/centers-clinics-and-institutes/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Centers &amp; Institutes</a>
+            <a href="https://www.ubalt.edu/about/newsroom/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">News &amp; Stories</a>
+          </div>
+        </details>
+      </nav>
+
+      <!-- UBalt Schools -->
+      <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-3">Schools &amp; Colleges</p>
+      <div class="space-y-1 mb-8">
+        <a href="https://www.ubalt.edu/merrick/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Merrick School of Business</a>
+        <a href="https://law.ubalt.edu/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">School of Law</a>
+        <a href="https://www.ubalt.edu/cpa/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">College of Public Affairs</a>
+        <a href="https://www.ubalt.edu/cas/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] p-2 rounded hover:bg-slate-50">Yale Gordon College of Arts &amp; Sciences</a>
+      </div>
+
+      <!-- CTAs -->
+      <div class="grid grid-cols-2 gap-2 mb-6">
+        <a href="https://www.ubalt.edu/academics/explore-all-programs/" target="_blank" rel="noopener" class="flex items-center gap-2 p-3 rounded-lg bg-[#40C1BB] text-[#011221] text-xs font-bold uppercase tracking-wider hover:bg-[#35a8a2] transition-colors"><span>Programs</span></a>
+        <a href="https://www.ubalt.edu/admission-and-aid/apply-now.cfm" target="_blank" rel="noopener" class="flex items-center gap-2 p-3 rounded-lg bg-[#f5a623] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#e09515] transition-colors"><span>Apply</span></a>
+        <a href="https://www.ubalt.edu/admission-and-aid/visit-and-connect/" target="_blank" rel="noopener" class="flex items-center gap-2 p-3 rounded-lg bg-[#7c3aed] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#6d28d9] transition-colors"><span>Visit</span></a>
+        <a href="https://www.ubalt.edu/give/" target="_blank" rel="noopener" class="flex items-center gap-2 p-3 rounded-lg bg-[#f472b6] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#ec4899] transition-colors"><span>Give</span></a>
+      </div>
+
+      <div class="flex flex-col gap-2 mb-6">
+        <a href="https://www.ubalt.edu/admission-and-aid/visit-and-connect/request-information.cfm" target="_blank" rel="noopener" class="text-xs text-slate-600 hover:text-[#40C1BB] transition-colors">Request Information</a>
+        <a href="https://myubalt.ubalt.edu/" target="_blank" rel="noopener" class="text-xs text-slate-600 hover:text-[#40C1BB] transition-colors">MyUBalt</a>
+      </div>
+
+      <!-- BoodleBox Login -->
+      <div class="pt-4 border-t border-slate-100">
+        <a href="https://boodlebox.ai/" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-3 bg-[#40C1BB] hover:bg-[#35a8a2] text-[#011221] text-sm font-bold rounded-lg transition-colors uppercase tracking-wider">Log in with BoodleBox</a>
+        <p class="text-[10px] text-slate-400 text-center mt-2">Powered by BoodleBox</p>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" class="pt-16">
+    
+    <!-- Hero Section — UBalt Navy Style -->
+    <section class="relative pt-36 pb-36 overflow-hidden bg-[#011221] text-white reveal">
+      <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_30%_20%,#40C1BB,transparent_60%)]"></div>
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20 relative z-10">
+        <div class="mb-16">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs md:text-sm mb-8">Center for AI Learning &amp; Community-Engaged Innovation</p>
+          <h1 class="text-5xl md:text-7xl lg:text-display-xl font-black leading-[0.95] tracking-tight mb-6">
+            <span class="block text-white">CAILI AI</span>
+            <span class="gradient-text">Studio</span>
+          </h1>
+          <p class="text-xl md:text-3xl text-white/90 font-medium mb-8 max-w-4xl leading-snug">
+            A Community-Grounded Compass for responsible AI adoption at the University of Baltimore
+          </p>
+          <p class="text-base text-white/65 max-w-3xl mb-10 leading-relaxed">
+            Helping the University of Baltimore turn institutional AI access into a working ecosystem of course-specific tools, faculty enablement workflows, and builder agents. Guided by our <strong class="text-white">Community-Grounded Compass</strong>, CAILI makes responsible teaching and learning easier for classroom work, study support, and community innovation.
+          </p>
+          <div class="flex flex-col sm:flex-row items-start gap-4">
+            <a href="#personas" class="w-full sm:w-auto px-8 py-3.5 bg-[#40C1BB] hover:bg-[#35a8a2] text-[#011221] text-sm font-bold rounded-full shadow-navy hover:shadow-xl transition-all uppercase tracking-wider">Explore our AI Compass</a>
+            <a href="#ecosystem" class="w-full sm:w-auto px-8 py-3.5 bg-transparent border-2 border-white/20 hover:border-white/40 text-white text-sm font-bold rounded-full hover:bg-white/5 transition-all uppercase tracking-wider">Explore the tool ecosystem</a>
+          </div>
+        </div>
+
+        <!-- Hero Highlights Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+          <!-- Card 1 -->
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 hover:-translate-y-1 transition-transform">
+            <div class="w-12 h-12 bg-blue-50 text-[#40C1BB] rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v4m0 0L7 14m5-6 5 6M5 18h14M9 14a2 2 0 1 1-4 0h4Zm10 0a2 2 0 1 1-4 0h4Z"/></svg>
+            </div>
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Mission focus</p>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Community Compass</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">Six Baltimore personas ground every CAILI tool in real stakeholder needs, ensuring access and measured adoption.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 hover:-translate-y-1 transition-transform">
+            <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 18h6m-5 2h4m-5-4 1-2h4l1 2m-6-6a3 3 0 1 1 6 0c0 1.4-.7 2.2-1.5 3-.8.7-1.5 1.4-1.5 2H11c0-.6-.7-1.3-1.5-2C8.7 12.2 8 11.4 8 10Z"/></svg>
+            </div>
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Built for adoption</p>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Tool Ecosystem</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">Live prototypes, prompt libraries, and builder agents make AI feel usable now, not hypothetical later.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 hover:-translate-y-1 transition-transform">
+            <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h10v4H4V7Zm6 6h10v4H10v-4Zm-6 0h4v4H4v-4Z"/></svg>
+            </div>
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Ready to launch</p>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Course Launchpads</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">Pathways connecting tools to course goals, simulations, study support, and applied classroom work.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 hover:-translate-y-1 transition-transform">
+            <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm8 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM4 18a4 4 0 0 1 8 0M12 18a4 4 0 0 1 8 0"/></svg>
+            </div>
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Shared learning</p>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Community Focus</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">BoodleBox workspaces and collective prompting patterns make it easier to learn together.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tool Ecosystem Section -->
+    <section id="ecosystem" class="py-20 bg-white reveal">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">CAILI AI Studio Tool Ecosystem</p>
+          <h2 class="text-display-md md:text-display-lg font-black text-slate-900 uppercase tracking-tight mb-3">Course-specific AI tools, faculty workflows, and builder agents</h2>
+          <p class="text-slate-600 text-lg">Bringing together working prototypes that make responsible AI adoption practical across UBalt classrooms.</p>
+        </div>
+
+        <div class="space-y-16">
+          <!-- Group: MBA -->
+          <div>
+            <div class="mb-8 border-b border-slate-200 pb-4">
+              <span class="bg-slate-100 text-slate-600 px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wide">MBA Learning Tools</span>
+              <h3 class="text-xl font-bold text-slate-900 mt-4">Course-specific tools for simulation, study support, and quantitative practice.</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- Tool 1 -->
+              <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col hover:shadow-card-hover transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                  <div class="p-3 bg-blue-50 text-[#40C1BB] rounded-lg"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 19h16M6 15.5L10 10l4 3 4-6M18 7h2v2"/></svg></div>
+                  <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Live Prototype</span>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">ECON Simulator</h4>
+                <p class="text-sm text-slate-600 flex-1 mb-4">Interactive economics simulation for applied scenario testing, tradeoff analysis, and visual learning.</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Scenario testing</span>
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Visual feedback</span>
+                </div>
+                <a href="https://main.difkww0p8da8o.amplifyapp.com/" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center w-full py-2.5 bg-[#011221] hover:bg-[#40C1BB] hover:text-[#011221] text-white text-sm font-bold rounded-lg transition-colors uppercase tracking-wider">Launch Simulator</a>
+              </div>
+              <!-- Tool 2 -->
+              <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col hover:shadow-card-hover transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                  <div class="p-3 bg-indigo-50 text-indigo-600 rounded-lg"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+                  <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Live Prototype</span>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">ECON 606 Study Bot</h4>
+                <p class="text-sm text-slate-600 flex-1 mb-4">A course-specific study assistant for economics review, concept explanation, and exam prep.</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Concept review</span>
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Exam prep</span>
+                </div>
+                <a href="https://box.boodle.ai/a/@ECON606StudyBot" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center w-full py-2.5 bg-[#011221] hover:bg-[#40C1BB] hover:text-[#011221] text-white text-sm font-bold rounded-lg transition-colors uppercase tracking-wider">Open Study Bot</a>
+              </div>
+              <!-- Tool 3 -->
+              <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col hover:shadow-card-hover transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                  <div class="p-3 bg-amber-50 text-amber-600 rounded-lg"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div>
+                  <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Live Prototype</span>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">OPM Simulator</h4>
+                <p class="text-sm text-slate-600 flex-1 mb-4">Operations and supply chain simulation for forecasting, capacity, and decision-making practice.</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Forecasting</span>
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Capacity planning</span>
+                </div>
+                <a href="https://oscmsim.streamlit.app/" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center w-full py-2.5 bg-[#011221] hover:bg-[#40C1BB] hover:text-[#011221] text-white text-sm font-bold rounded-lg transition-colors uppercase tracking-wider">Launch OPM Simulator</a>
+              </div>
+              <!-- Tool 4 -->
+              <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col hover:shadow-card-hover transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                  <div class="p-3 bg-rose-50 text-rose-600 rounded-lg"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
+                  <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Live Prototype</span>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">QuantLab</h4>
+                <p class="text-sm text-slate-600 flex-1 mb-4">A practice space for formulas, data interpretation, applied modeling, and MBA analytics support.</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Formula drills</span>
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Data interpretation</span>
+                </div>
+                <a href="https://rjquantlab.streamlit.app/" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center w-full py-2.5 bg-[#011221] hover:bg-[#40C1BB] hover:text-[#011221] text-white text-sm font-bold rounded-lg transition-colors uppercase tracking-wider">Open QuantLab</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Group: Faculty -->
+          <div>
+            <div class="mb-8 border-b border-slate-200 pb-4">
+              <span class="bg-slate-100 text-slate-600 px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wide">Faculty Enablement</span>
+              <h3 class="text-xl font-bold text-slate-900 mt-4">Tools that help convert course materials into usable workflows.</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Faculty Card 1 -->
+              <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-card-hover transition-shadow flex flex-col sm:flex-row">
+                <div class="p-6 sm:w-2/3 flex flex-col">
+                  <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-blue-50 text-[#40C1BB] rounded-lg"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div>
+                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Live Prototype</span>
+                  </div>
+                  <h4 class="text-xl font-bold text-slate-900 mb-2">Instructions Generator</h4>
+                  <p class="text-sm text-slate-600 mb-4 flex-1">Turn course materials, assignments, and learning goals into structured AI instructions and multi-agent architectures.</p>
+                  <a href="/instructions-generator/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-block text-center py-2.5 px-6 bg-[#011221] hover:bg-[#40C1BB] hover:text-[#011221] text-white text-sm font-bold rounded-lg transition-colors uppercase tracking-wider">Generate Instructions</a>
+                </div>
+                <div class="bg-slate-50 p-6 sm:w-1/3 border-t sm:border-t-0 sm:border-l border-slate-200">
+                  <p class="text-xs font-bold uppercase text-slate-400 mb-3">Outcomes</p>
+                  <ul class="text-sm text-slate-600 space-y-2">
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Assignment-ready</li>
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Shared agent roles</li>
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Reusable patterns</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Faculty Card 2 -->
+              <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-card-hover transition-shadow flex flex-col sm:flex-row">
+                <div class="p-6 sm:w-2/3 flex flex-col">
+                  <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-purple-50 text-purple-600 rounded-lg"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Live Prototype</span>
+                  </div>
+                  <h4 class="text-xl font-bold text-slate-900 mb-2">AI Syllabi Policy Generator</h4>
+                  <p class="text-sm text-slate-600 mb-4 flex-1">Create AI syllabus statements using a tiered framework or a custom set of classroom rules and disclosure expectations.</p>
+                  <div class="flex gap-2">
+                     <a href="/ai-syllabi-policy-generator/" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-2.5 px-4 bg-[#011221] hover:bg-[#40C1BB] hover:text-[#011221] text-white text-sm font-bold rounded-lg transition-colors uppercase tracking-wider">Build Policy</a>
+                  </div>
+                </div>
+                <div class="bg-slate-50 p-6 sm:w-1/3 border-t sm:border-t-0 sm:border-l border-slate-200">
+                  <p class="text-xs font-bold uppercase text-slate-400 mb-3">Outcomes</p>
+                  <ul class="text-sm text-slate-600 space-y-2">
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Course-specific text</li>
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Clear expectations</li>
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Printable output</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Persona Compass Section -->
+    <section id="personas" class="py-20 bg-slate-50 reveal border-y border-slate-200">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">A Community-Grounded Compass for AI</p>
+          <h2 class="text-display-md md:text-display-lg font-black text-slate-900 uppercase tracking-tight mb-3">Meet Baltimore's <span class="gradient-text">AI Ecosystem</span></h2>
+          <p class="text-slate-600 text-lg mb-6">
+            According to the <strong>"Understanding Baltimore's AI Ecosystem" Report</strong>, successful AI adoption requires understanding stakeholders' lived experiences. We identified <strong>six distinct user personas</strong> across Baltimore.
+          </p>
+          <div class="p-4 bg-white border border-slate-200 rounded-xl inline-block text-sm text-slate-600 text-left">
+            💡 Research conducted in partnership with <strong>Mindgrub</strong>, a Baltimore tech company with deep expertise in user research.
+          </div>
+        </div>
+
+        <!-- Personas Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          
+          <!-- Persona 1: Civic Champion -->
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-sky-100 flex flex-col h-full hover:shadow-card-hover transition-shadow relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-sky-50 rounded-bl-full -z-0"></div>
+            <div class="relative z-10">
+              <span class="inline-block bg-sky-100 text-sky-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 border border-sky-200">Active AI User</span>
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 rounded-full bg-sky-600 text-white flex items-center justify-center font-bold text-lg">CC</div>
+                <div>
+                  <h3 class="text-xl font-bold text-slate-900 leading-tight">The Civic Champion</h3>
+                  <p class="text-xs text-slate-600">City Data Analyst • Age 38</p>
+                </div>
+              </div>
+              <blockquote class="italic text-sm text-slate-600 bg-slate-50 border-l-2 border-sky-400 p-3 my-4 rounded-r-lg">
+                "We don't need more data—we need better decisions. AI helps us get there faster, but only if we stay accountable."
+              </blockquote>
+              <div class="text-sm text-slate-600 mb-4 space-y-2">
+                <p>A city official leveraging AI to make Baltimore more responsive and equitable. They aggregate data to surface service gaps.</p>
+                <div class="pt-3 border-t border-dashed border-slate-200">
+                  <strong class="text-slate-800 text-xs uppercase tracking-wider">Needs &amp; Fears:</strong>
+                  <p class="mt-1">Needs actionable data. Fears AI replacing human accountability in public policy.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-auto bg-slate-50 p-3 rounded-lg border border-slate-100">
+              <p class="text-xs font-bold text-sky-700 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> CAILI Solution</p>
+              <p class="text-xs text-slate-600 mt-1"><strong>The Community-Grounded Compass</strong>—developed with Mindgrub from interviews with Baltimore city officials, community leaders, and data analysts—ensures every CAILI tool passes through the <strong>Fairness and Transparency lenses</strong>. AI is positioned as an "over-eager assistant" that surfaces insights while keeping human accountability at the center. The 4-lens ethical framework (Fairness, Transparency, Integrity, Community) was directly informed by this persona's insistence that data must serve people, not replace judgment.</p>
+            </div>
+          </div>
+
+          <!-- Persona 2: Student Superuser -->
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-sky-100 flex flex-col h-full hover:shadow-card-hover transition-shadow relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-sky-50 rounded-bl-full -z-0"></div>
+            <div class="relative z-10">
+              <span class="inline-block bg-sky-100 text-sky-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 border border-sky-200">Active AI User</span>
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 rounded-full bg-sky-600 text-white flex items-center justify-center font-bold text-lg">SS</div>
+                <div>
+                  <h3 class="text-xl font-bold text-slate-900 leading-tight">The Student Superuser</h3>
+                  <p class="text-xs text-slate-600">Finance Major • Age 22</p>
+                </div>
+              </div>
+              <blockquote class="italic text-sm text-slate-600 bg-slate-50 border-l-2 border-sky-400 p-3 my-4 rounded-r-lg">
+                "I'm getting assignments done in half the time—why wouldn't I use it?"
+              </blockquote>
+              <div class="text-sm text-slate-600 mb-4 space-y-2">
+                <p>An early adopter treating AI as a career accelerator. Uses AI for outlines, market trends, and job searching.</p>
+                <div class="pt-3 border-t border-dashed border-slate-200">
+                  <strong class="text-slate-800 text-xs uppercase tracking-wider">Needs &amp; Fears:</strong>
+                  <p class="mt-1">Needs maximum efficiency. Fears being left behind professionally.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-auto bg-slate-50 p-3 rounded-lg border border-slate-100">
+              <p class="text-xs font-bold text-sky-700 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-14h-7z"/></svg> CAILI Solution</p>
+              <p class="text-xs text-slate-600 mt-1">Channels raw ambition into <strong>structured, course-grounded tools</strong>: the ECON 606 Study Bot (a multi-agent AI system on BoodleBox), EconSim (78 interactive modules with live FRED economic data), QuantLab, and the OPM Simulator. BoodleBox's <strong>Enhanced AI Coach Mode</strong> transforms students from passive consumers of AI outputs into skilled practitioners who question outputs, interrogate assumptions, and distinguish well-written responses from well-reasoned ones. Students submit working process files with every assignment—conversation transcripts are examined, building the metacognitive skills employers demand.</p>
+            </div>
+          </div>
+
+          <!-- Persona 3: Adaptive Achiever -->
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-sky-100 flex flex-col h-full hover:shadow-card-hover transition-shadow relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-sky-50 rounded-bl-full -z-0"></div>
+            <div class="relative z-10">
+              <span class="inline-block bg-sky-100 text-sky-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 border border-sky-200">Active AI User</span>
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 rounded-full bg-sky-600 text-white flex items-center justify-center font-bold text-lg">AA</div>
+                <div>
+                  <h3 class="text-xl font-bold text-slate-900 leading-tight">The Adaptive Achiever</h3>
+                  <p class="text-xs text-slate-600">Non-Traditional Learner • Age 42</p>
+                </div>
+              </div>
+              <blockquote class="italic text-sm text-slate-600 bg-slate-50 border-l-2 border-sky-400 p-3 my-4 rounded-r-lg">
+                "Opting out feels like a privilege. With everything going on, I can't afford not to use it."
+              </blockquote>
+              <div class="text-sm text-slate-600 mb-4 space-y-2">
+                <p>Uses AI as a cognitive support system to process dense info and juggle work/study without losing independence.</p>
+                <div class="pt-3 border-t border-dashed border-slate-200">
+                  <strong class="text-slate-800 text-xs uppercase tracking-wider">Needs &amp; Fears:</strong>
+                  <p class="mt-1">Needs cognitive support. Fears eroding critical thinking skills.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-auto bg-slate-50 p-3 rounded-lg border border-slate-100">
+              <p class="text-xs font-bold text-sky-700 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> CAILI Solution</p>
+              <p class="text-xs text-slate-600 mt-1">Every CAILI tool is designed around the <strong>Integrity lens</strong>: course-grounded Study Bots limit responses to provided teaching materials with explicit references, preventing hallucination and keeping the student's reasoning at the center. <strong>BoodleBox Coach Mode</strong> develops metacognitive skills—students learn to question AI outputs, interrogate assumptions, and distinguish well-written from well-reasoned responses. Process files and conversation transcripts are submitted with assignments, ensuring the Adaptive Achiever's unique voice and critical thinking remain visible, not replaced.</p>
+            </div>
+          </div>
+
+          <!-- Persona 4: Prudent Professor -->
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-amber-100 flex flex-col h-full hover:shadow-card-hover transition-shadow relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
+            <div class="relative z-10">
+              <span class="inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 border border-amber-200">Hesitant AI User</span>
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-lg">PP</div>
+                <div>
+                  <h3 class="text-xl font-bold text-slate-900 leading-tight">The Prudent Professor</h3>
+                  <p class="text-xs text-slate-600">University Professor • Age 52</p>
+                </div>
+              </div>
+              <blockquote class="italic text-sm text-slate-600 bg-slate-50 border-l-2 border-amber-400 p-3 my-4 rounded-r-lg">
+                "The upsides are clear, but long-term impact is murky. We need more time to study."
+              </blockquote>
+              <div class="text-sm text-slate-600 mb-4 space-y-2">
+                <p>Highly concerned about cognitive decline, hallucination-riddled outputs, and a lack of clear institutional guidelines.</p>
+                <div class="pt-3 border-t border-dashed border-slate-200">
+                  <strong class="text-slate-800 text-xs uppercase tracking-wider">Needs &amp; Fears:</strong>
+                  <p class="mt-1">Needs to parse datasets efficiently. Fears student reliance and lack of policy.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-auto bg-slate-50 p-3 rounded-lg border border-slate-100">
+              <p class="text-xs font-bold text-amber-700 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> CAILI Solution</p>
+              <p class="text-xs text-slate-600 mt-1">The <strong>AI Syllabi Policy Generator</strong>, built on the AI Assessment Scale (AIAS), lets faculty create tiered, course-specific policies in minutes rather than hours. The <strong>Instructions Generator</strong> converts existing course materials into AI-ready classroom workflows. Through the <strong>AI Navigator Fellows program</strong>, cross-disciplinary faculty test AI tools in their own courses and share findings with colleagues—building institutional knowledge collectively. All CAILI tools are course-grounded: Study Bots reference only provided teaching materials with explicit citations, addressing the hallucination concerns that keep the Prudent Professor up at night.</p>
+            </div>
+          </div>
+
+          <!-- Persona 5: Hometown Hero -->
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-amber-100 flex flex-col h-full hover:shadow-card-hover transition-shadow relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -z-0"></div>
+            <div class="relative z-10">
+              <span class="inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 border border-amber-200">Hesitant AI User</span>
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-lg">HH</div>
+                <div>
+                  <h3 class="text-xl font-bold text-slate-900 leading-tight">The Hometown Hero</h3>
+                  <p class="text-xs text-slate-600">Skilled Trades / Lineman • Age 49</p>
+                </div>
+              </div>
+              <blockquote class="italic text-sm text-slate-600 bg-slate-50 border-l-2 border-amber-400 p-3 my-4 rounded-r-lg">
+                "AI feels less like some tool, and more like something that's happening to me."
+              </blockquote>
+              <div class="text-sm text-slate-600 mb-4 space-y-2">
+                <p>A Baltimore native whose world is physical. AI feels foreign, impractical, and vaguely threatening.</p>
+                <div class="pt-3 border-t border-dashed border-slate-200">
+                  <strong class="text-slate-800 text-xs uppercase tracking-wider">Needs &amp; Fears:</strong>
+                  <p class="mt-1">Needs tangible value. Fears surveillance, job instability, and moving too fast.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-auto bg-slate-50 p-3 rounded-lg border border-slate-100">
+              <p class="text-xs font-bold text-amber-700 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> CAILI Solution</p>
+              <p class="text-xs text-slate-600 mt-1">CAILI's <strong>Live Prototypes</strong>—from the ECON Simulator to the AI-Enabled Business Accelerator—demonstrate concrete, everyday value rather than abstract AI promises. The <strong>Community Lens</strong>, central to CAILI's 4-lens ethical framework, ensures every tool is designed <em>with</em> Baltimore communities, not <em>for</em> them. Free, unlimited BoodleBox access puts enterprise AI tools in the hands of every UBalt community member. The AI-Enabled Business Accelerator directly supports Baltimore entrepreneurs building ventures in healthcare, energy, housing, and education—proving AI can create opportunity, not just disruption.</p>
+            </div>
+          </div>
+
+          <!-- Persona 6: Labor Guardian -->
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-pink-100 flex flex-col h-full hover:shadow-card-hover transition-shadow relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-pink-50 rounded-bl-full -z-0"></div>
+            <div class="relative z-10">
+              <span class="inline-block bg-pink-100 text-pink-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 border border-pink-200">AI Resister</span>
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center font-bold text-lg">LG</div>
+                <div>
+                  <h3 class="text-xl font-bold text-slate-900 leading-tight">The Labor Guardian</h3>
+                  <p class="text-xs text-slate-600">Union Rep / Educator • Age 39</p>
+                </div>
+              </div>
+              <blockquote class="italic text-sm text-slate-600 bg-slate-50 border-l-2 border-pink-400 p-3 my-4 rounded-r-lg">
+                "Somehow, new technology always ends up exploiting the working class."
+              </blockquote>
+              <div class="text-sm text-slate-600 mb-4 space-y-2">
+                <p>Sees AI as a growing threat to job security and human-centered work. Rigorously tests for hallucinations.</p>
+                <div class="pt-3 border-t border-dashed border-slate-200">
+                  <strong class="text-slate-800 text-xs uppercase tracking-wider">Needs &amp; Fears:</strong>
+                  <p class="mt-1">Needs to protect workers. Fears AI pushing out human judgment and core skills.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-auto bg-slate-50 p-3 rounded-lg border border-slate-100">
+              <p class="text-xs font-bold text-pink-700 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg> CAILI Solution</p>
+              <p class="text-xs text-slate-600 mt-1">CAILI's core philosophy is that AI should <strong>enhance—rather than replace—the educational experience</strong>. BoodleBox's transparency architecture (conversation transcripts, process files, faculty visibility) ensures every AI interaction is auditable. The <strong>4-lens ethical framework</strong> was designed with the Labor Guardian's concerns at the center: Integrity keeps human reasoning primary, Community puts Baltimore's workers in the problem, not outside it. The <strong>AI-Enabled Business Accelerator</strong> proves the model—supporting Baltimore founders who <em>create</em> jobs. CAILI treats AI as a collaborator, not a shortcut machine.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Themes & Insights Box -->
+        <div class="bg-white rounded-3xl p-8 md:p-12 shadow-card border border-slate-200">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-6">Common Themes</h3>
+              <div class="space-y-4">
+                <div class="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                  <div class="text-2xl">🧮</div>
+                  <div><strong class="block text-sm text-slate-900">AI as a "Calculator"</strong><span class="text-xs text-slate-600">A tool to expedite tasks, not replace thinking.</span></div>
+                </div>
+                <div class="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                  <div class="text-2xl">📚</div>
+                  <div><strong class="block text-sm text-slate-900">AI Training Is Lacking</strong><span class="text-xs text-slate-600">Employers haven't offered robust training yet.</span></div>
+                </div>
+                <div class="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                  <div class="text-2xl">🌍</div>
+                  <div><strong class="block text-sm text-slate-900">Environmental Impact</strong><span class="text-xs text-slate-600">Concern about the energy footprint of AI models.</span></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border border-blue-100">
+              <h3 class="text-xl font-bold text-blue-900 mb-4">What Now? The Path Forward</h3>
+              <ul class="space-y-3 text-sm text-blue-800 mb-6">
+                <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg> Test these personas with the community.</li>
+                <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg> Use them to guide outreach and workforce planning.</li>
+                <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg> Treat personas as a living framework.</li>
+              </ul>
+              <p class="text-xs text-[#40C1BB] font-medium italic">Contact Dr. Jessica A Stansbury (caili@ubalt.edu) for more info.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Workflows (BoodleBox) Section -->
+    <section id="workflows" class="py-20 bg-white reveal">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        
+        <!-- Feature 1 -->
+        <div class="flex flex-col lg:flex-row gap-16 items-center mb-24">
+          <div class="lg:w-1/2">
+            <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">Institutional infrastructure, activated</p>
+            <div class="flex items-center gap-4 mb-6">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-900">BoodleBox Integration</h2>
+            </div>
+            <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+              BoodleBox provides UBalt with <strong>free, unlimited access</strong> to leading AI models&mdash;GPT-4o, Claude, Gemini, Perplexity, and more&mdash;through a single, secure, FERPA-compliant platform. As the <strong>Collaborative AI Platform for Lifelong Learning and Work</strong>, BoodleBox combines multi-model access with Coach Mode for AI literacy development, custom AI assistants, and enterprise-grade security. CAILI adds the missing layer: course-specific tools, faculty enablement workflows, and shared collaborative patterns that turn access into adoption.
+            </p>
+            <ul class="space-y-6">
+              <li class="flex gap-4">
+                <div class="w-10 h-10 rounded-full bg-[#40C1BB]/20 text-[#40C1BB] flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16M12 4v16M7 7h10v10H7Z"/></svg></div>
+                <div>
+                  <strong class="block text-slate-900">Multi-model access, one platform</strong>
+                  <span class="text-sm text-slate-600">Reach GPT-4o, Claude, Gemini, and Perplexity from a single starting point&mdash;no switching between tools. Up to 96% token reduction keeps premium AI affordable.</span>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8m-8 5h8m-8 5h5M5 4h14v16H5V4Z"/></svg></div>
+                <div>
+                  <strong class="block text-slate-900">Coach Mode &amp; AI literacy development</strong>
+                  <span class="text-sm text-slate-600">Students learn while doing. Coach Mode guides interactions, helping users develop AI judgment&mdash;knowing what, when, how, and why to deploy AI tools.</span>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+                <div>
+                  <strong class="block text-slate-900">Transparent assessment &amp; collaboration</strong>
+                  <span class="text-sm text-slate-600">Students can cite and share AI-assisted work. Professors evaluate both process and product&mdash;from individual interactions to group projects. Your data stays yours&mdash;BoodleBox never trains models on user content.</span>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-14h-7z"/></svg></div>
+                <div>
+                  <strong class="block text-slate-900">Lifelong portability &amp; enterprise security</strong>
+                  <span class="text-sm text-slate-600">FERPA compliant and SOC 2 certified. Students keep access to their AI work after graduation. One of higher education's largest AI deployments with SSO and LMS integration support.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="lg:w-1/2 w-full">
+            <!-- Mockup -->
+            <div class="browser-mockup rounded-xl overflow-hidden">
+              <div class="bg-slate-800 px-4 py-3 flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-rose-500"></div><div class="w-3 h-3 rounded-full bg-amber-500"></div><div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                <div class="ml-4 bg-slate-700 rounded-md px-3 py-1 text-xs text-slate-300 w-64 text-center">boodlebox.workspace &mdash; CAILI Studio</div>
+              </div>
+              <div class="flex bg-slate-50 h-80">
+                <div class="w-1/3 bg-white border-r border-slate-200 p-4">
+                  <div class="text-xs font-bold text-slate-400 uppercase mb-3">Shared Rooms</div>
+                  <div class="bg-[#40C1BB]/10 text-[#011221] text-sm p-2 rounded-lg font-medium mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#40C1BB]"></span>MBA Launch Plan</div>
+                  <div class="text-slate-600 text-sm p-2 hover:bg-slate-100 rounded-lg cursor-pointer mb-2">Law Research Lab</div>
+                  <div class="text-slate-600 text-sm p-2 hover:bg-slate-100 rounded-lg cursor-pointer mb-2">Faculty Sandbox</div>
+                  <div class="text-slate-600 text-sm p-2 hover:bg-slate-100 rounded-lg cursor-pointer">AI Navigator Cohort</div>
+                  <div class="mt-4 pt-3 border-t border-slate-100">
+                    <div class="text-[10px] font-bold text-slate-400 uppercase mb-2">Active Models</div>
+                    <div class="flex flex-wrap gap-1">
+                      <span class="text-[9px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">GPT-4o</span>
+                      <span class="text-[9px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Claude</span>
+                      <span class="text-[9px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Gemini</span>
+                      <span class="text-[9px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Perplexity</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-2/3 p-4 flex flex-col justify-end gap-3 bg-slate-50">
+                  <div class="bg-[#011221] text-white p-3 rounded-2xl rounded-tr-sm text-sm self-end max-w-[80%] shadow-sm">Build a study guide from this case pack and flag gaps in our analysis.</div>
+                  <div class="bg-white border border-slate-200 text-slate-700 p-3 rounded-2xl rounded-tl-sm text-sm self-start max-w-[80%] shadow-sm">I can summarize the readings, extract key themes, and draft a collaborative outline with citations to review as a group.</div>
+                  <div class="bg-[#011221] text-white p-3 rounded-2xl rounded-tr-sm text-sm self-end max-w-[80%] shadow-sm">Compare tone and identify risks before we submit the final draft.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-50 reveal">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">Why CAILI AI Studio matters</p>
+          <h2 class="text-display-md md:text-display-lg font-black text-slate-900 uppercase tracking-tight mb-3">Accelerate adoption. <span class="gradient-text">Empower learning.</span></h2>
+          <p class="text-slate-600 text-lg">
+            In its first year, CAILI moved quickly from vision to action&mdash;securing a campus-wide BoodleBox partnership, launching the AI Navigator Fellows program, and growing the AI Summit into one of the region's most important convenings. In partnership with Merrick's Center for Entrepreneurship and Innovation, CAILI also powers the <strong>AI-Enabled Business Accelerator</strong>, a 9-week program supporting Baltimore founders applying AI across healthcare, energy, education, housing, and workforce development. Free access alone does not create confident adoption. CAILI turns institutional access into a usable ecosystem&mdash;grounded in the <strong>Community-Grounded Compass</strong>.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div class="bg-white rounded-2xl p-8 shadow-card border border-slate-100 text-center hover:-translate-y-1 transition-transform">
+            <div class="w-14 h-14 bg-blue-100 text-[#40C1BB] rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-5">01</div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Live Prototypes</h3>
+            <p class="text-sm text-slate-600">Working tools make the Studio easier to demo, adopt, and extend than a page built around abstract possibilities.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-card border border-slate-100 text-center hover:-translate-y-1 transition-transform">
+            <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-5">02</div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Faculty Structure</h3>
+            <p class="text-sm text-slate-600">Shared instructions, prompt patterns, and course-ready setup help instructors translate goals into workflows.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-card border border-slate-100 text-center hover:-translate-y-1 transition-transform">
+            <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-5">03</div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Responsible Adoption</h3>
+            <p class="text-sm text-slate-600">The Studio keeps fairness, integrity, and transparency in the process while showing real implementation.</p>
+          </div>
+        </div>
+
+        <!-- What We Offer -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-bold text-slate-900 mb-2 text-center">What We Offer</h3>
+          <p class="text-center text-slate-600 mb-8">CAILI is a regional engine where innovation, learning, and problem-solving are co-created by students, faculty, industry, and community. Rather than treating AI as an abstract technology, CAILI grounds its work in real urban challenges.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div class="bg-white rounded-xl p-5 shadow-card border border-slate-100 flex items-start gap-3">
+              <div class="w-10 h-10 rounded-lg bg-blue-100 text-[#40C1BB] flex items-center justify-center shrink-0 text-lg">🎓</div>
+              <div><strong class="block text-sm text-slate-900">Faculty Education</strong><span class="text-xs text-slate-600">AI Navigator Fellows, workshops &amp; PLCs building AI confidence.</span></div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-card border border-slate-100 flex items-start gap-3">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-lg">📖</div>
+              <div><strong class="block text-sm text-slate-900">Academic Programming</strong><span class="text-xs text-slate-600">AI literacy courses for faculty &amp; students.</span></div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-card border border-slate-100 flex items-start gap-3">
+              <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 text-lg">⚙️</div>
+              <div><strong class="block text-sm text-slate-900">Applied Projects</strong><span class="text-xs text-slate-600">Real-world co-created AI initiatives.</span></div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-card border border-slate-100 flex items-start gap-3">
+              <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 text-lg">🤝</div>
+              <div><strong class="block text-sm text-slate-900">Partnerships</strong><span class="text-xs text-slate-600">Academic expertise + community needs.</span></div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-card border border-slate-100 flex items-start gap-3">
+              <div class="w-10 h-10 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 text-lg">🚀</div>
+              <div><strong class="block text-sm text-slate-900">AI Business Accelerator</strong><span class="text-xs text-slate-600">9-week program for Baltimore founders building AI ventures across healthcare, energy, housing, and education.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Distinction Banner -->
+        <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-8 border border-purple-100 text-center">
+          <h4 class="text-lg font-bold text-purple-900 mb-2">Our Distinction</h4>
+          <p class="text-slate-700 max-w-2xl mx-auto">CAILI is not simply a campus resource. It is a regional engine where AI innovation is <strong>co-created</strong> by students, faculty, industry, and the communities we serve. This is <strong>community-led transformation</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accelerator Banner -->
+    <section class="py-20 bg-[#011221] text-white reveal">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-4xl font-black uppercase tracking-tight mb-4">Move from access to working academic use.</h2>
+        <p class="text-white/60 mb-6 text-lg">CAILI organizes the demo around live prototypes, course pathways, and reusable prompt patterns.</p>
+        <div class="inline-flex flex-col sm:flex-row items-center gap-4 bg-white/10 p-4 rounded-xl border border-white/10">
+          <span class="text-[#40C1BB] font-bold uppercase text-xs tracking-wider">Now Surfacing:</span>
+          <span id="banner-rotator-text" class="text-white/80 font-medium transition-opacity duration-300">"Understanding Baltimore's AI Ecosystem" persona report with Mindgrub</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="py-20 bg-white reveal">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">Use cases across programs</p>
+          <h2 class="text-display-md md:text-display-lg font-black text-slate-900 uppercase tracking-tight mb-3">Where the ecosystem expands</h2>
+          <p class="text-slate-600 text-lg">Reusable prompt scaffolds, synthesis support, and clearer workflow starting points for your specific discipline.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="flex flex-wrap justify-center gap-2 mb-12" id="filter-container">
+          <button class="filter-btn active px-5 py-2 rounded-full text-sm font-bold bg-[#40C1BB] text-[#011221] transition-colors uppercase tracking-wider" data-filter="all">All</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-colors uppercase tracking-wider" data-filter="mba">MBA</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-colors uppercase tracking-wider" data-filter="law">School of Law</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-colors uppercase tracking-wider" data-filter="mpa">MPA</button>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="use-case-grid">
+          <!-- Item: MBA -->
+          <div class="use-item bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col" data-category="mba">
+            <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider self-start mb-4">MBA Workflow</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Market Research &amp; Analysis</h3>
+            <p class="text-sm text-slate-600 mb-6 flex-1">Compare markets with sharper evidence, clearer framing, and less time lost stitching sources together.</p>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 relative mt-auto">
+              <span class="absolute -top-3 left-4 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Try asking</span>
+              <p class="text-sm text-slate-700 italic mt-2">"Compare five mid-sized Maryland renewable-energy startups. Highlight strategy, growth, differentiation, and cite credible market evidence."</p>
+            </div>
+          </div>
+          
+          <!-- Item: MBA 2 -->
+          <div class="use-item bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col" data-category="mba">
+            <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider self-start mb-4">MBA Workflow</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Idea Validation &amp; Venture Testing</h3>
+            <p class="text-sm text-slate-600 mb-6 flex-1">Pressure-test demand, revenue logic, user fit, and execution risk before committing to a venture path.</p>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 relative mt-auto">
+              <span class="absolute -top-3 left-4 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Try asking</span>
+              <p class="text-sm text-slate-700 italic mt-2">"Build a validation plan for a digital mental-health platform for college students. Cover demand, personas, revenue, and risk."</p>
+            </div>
+          </div>
+
+          <!-- Item: Law -->
+          <div class="use-item bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col" data-category="law">
+            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider self-start mb-4">Law Workflow</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Case Law Summarization</h3>
+            <p class="text-sm text-slate-600 mb-6 flex-1">Read cases faster while staying grounded in holding, reasoning, and the facts that actually matter.</p>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 relative mt-auto">
+              <span class="absolute -top-3 left-4 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Try asking</span>
+              <p class="text-sm text-slate-700 italic mt-2">"Summarize three Maryland appellate decisions on student speech and explain how they could shape Smith v. UBalt."</p>
+            </div>
+          </div>
+
+          <!-- Item: Law 2 -->
+          <div class="use-item bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col" data-category="law">
+            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider self-start mb-4">Law Workflow</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Drafting Motions &amp; Briefs</h3>
+            <p class="text-sm text-slate-600 mb-6 flex-1">Organize claims, authorities, and counterarguments before drafting in your own voice.</p>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 relative mt-auto">
+              <span class="absolute -top-3 left-4 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Try asking</span>
+              <p class="text-sm text-slate-700 italic mt-2">"Outline a motion for summary judgment in a nonprofit negligence case, including rules, authorities, and counterarguments."</p>
+            </div>
+          </div>
+
+          <!-- Item: MPA -->
+          <div class="use-item bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col" data-category="mpa">
+            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider self-start mb-4">MPA Workflow</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Policy Research Analysis</h3>
+            <p class="text-sm text-slate-600 mb-6 flex-1">Read policy proposals with a better handle on stakeholders, tradeoffs, and equity implications.</p>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 relative mt-auto">
+              <span class="absolute -top-3 left-4 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Try asking</span>
+              <p class="text-sm text-slate-700 italic mt-2">"Summarize the Maryland Sustainable Communities Act of 2025 and note likely implications for Baltimore economic development and equity."</p>
+            </div>
+          </div>
+
+          <!-- Item: MPA 2 -->
+          <div class="use-item bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col" data-category="mpa">
+            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider self-start mb-4">MPA Workflow</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Grant Writing &amp; Funding</h3>
+            <p class="text-sm text-slate-600 mb-6 flex-1">Connect public-interest goals to funding opportunities, clearer logic models, and stronger proposals.</p>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 relative mt-auto">
+              <span class="absolute -top-3 left-4 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Try asking</span>
+              <p class="text-sm text-slate-700 italic mt-2">"Draft a grant-proposal outline for a West Baltimore food-security initiative, including need, objectives, and funding fit."</p>
+            </div>
+          </div>
+          <!-- Item: AI Business Accelerator -->
+          <div class="use-item bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col" data-category="mba">
+            <span class="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider self-start mb-4">AI Accelerator</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">AI-Enabled Venture Building</h3>
+            <p class="text-sm text-slate-600 mb-6 flex-1">Validate AI-powered business ideas with customer discovery, market fit analysis, and go-to-market strategy&mdash;backed by UBalt mentors and industry partners.</p>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 relative mt-auto">
+              <span class="absolute -top-3 left-4 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Try asking</span>
+              <p class="text-sm text-slate-700 italic mt-2">"Build a validation plan for an AI-powered platform connecting Baltimore residents to eviction-prevention resources. Cover demand, unit economics, and partnership strategy."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Responsible AI / Ethics Section -->
+    <section id="ethics" class="py-20 bg-slate-50 reveal">
+      <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">Mission guardrails</p>
+          <h2 class="text-display-md md:text-display-lg font-black text-slate-900 uppercase tracking-tight mb-3">Responsible Teaching &amp; Learning</h2>
+          <p class="text-slate-600 text-lg">
+            Using models to widen thinking, document reasoning, and stay accountable to the people affected by the work. CAILI's approach is grounded in <strong>UBalt's Generative AI Guidelines</strong> (developed with the Office of Academic Affairs), the <strong>EDUCAUSE AI Ethical Guidelines</strong> for higher education, and our <strong>six Baltimore personas</strong> who remind us that AI must serve communities, not replace human judgment.
+          </p>
+        </div>
+
+        <!-- Four Lens Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-emerald-100 hover:-translate-y-1 transition-transform">
+            <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5c4 0 7 2.5 7 6.5S16 18 12 19c-4-1-7-3.5-7-7.5S8 5 12 5Z"/></svg></div>
+            <h3 class="font-bold text-slate-900 mb-2">Fairness &amp; Equity</h3>
+            <p class="text-sm text-slate-600">Check for missing voices, uneven impact, and untested assumptions. Use AI to widen perspective—not narrow it. <em class="text-emerald-600">Driven by the Civic Champion persona, informed by the Community-Grounded Compass research with Mindgrub.</em></p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-blue-100 hover:-translate-y-1 transition-transform">
+            <div class="w-12 h-12 bg-blue-50 text-[#40C1BB] rounded-xl flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4 5 8v4c0 4 2.8 7 7 8 4.2-1 7-4 7-8V8l-7-4Z"/></svg></div>
+            <h3 class="font-bold text-slate-900 mb-2">Transparency</h3>
+            <p class="text-sm text-slate-600">Show sources, disclose AI support, and make limits visible. Every CAILI Study Bot cites exactly which teaching materials inform its responses—no black boxes. <em class="text-[#40C1BB]">Essential for the Prudent Professor.</em></p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-amber-100 hover:-translate-y-1 transition-transform">
+            <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 5h10v14H7V5Zm3 4h4m-4 4h4m-4 4h2"/></svg></div>
+            <h3 class="font-bold text-slate-900 mb-2">Academic Integrity</h3>
+            <p class="text-sm text-slate-600">Let AI support structure while your own reasoning does the work. BoodleBox's process-file submission and Coach Mode make AI use visible and auditable. <em class="text-amber-600">Guarded by the Adaptive Achiever's insistence on keeping human reasoning primary.</em></p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-card border border-pink-100 hover:-translate-y-1 transition-transform">
+            <div class="w-12 h-12 bg-pink-50 text-pink-600 rounded-xl flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm8 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM4 18a4 4 0 0 1 8 0M12 18a4 4 0 0 1 8 0"/></svg></div>
+            <h3 class="font-bold text-slate-900 mb-2">Community Engagement</h3>
+            <p class="text-sm text-slate-600">Use AI in ways that strengthen trust, social mobility, and real partnership. The Community Lens—central to CAILI's 4-lens framework—ensures tools are built with communities, not just for them. <em class="text-pink-600">Voiced by the Hometown Hero &amp; Labor Guardian.</em></p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div class="bg-emerald-50 rounded-2xl p-8 border border-emerald-100">
+            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Do use AI to explore</h3>
+            <ul class="space-y-3 text-slate-700 text-sm">
+              <li class="flex items-start gap-2"><strong>&bull;</strong> Use AI to summarize readings, compare cases, and structure outlines&mdash;treat it as a thinking partner, not a replacement.</li>
+              <li class="flex items-start gap-2"><strong>&bull;</strong> Verify facts, cite sources, and disclose AI assistance when required. UBalt's Generative AI Guidelines, developed with Academic Affairs, provide the framework.</li>
+              <li class="flex items-start gap-2"><strong>&bull;</strong> Revise generated material into your own analysis and voice. BoodleBox's process-file submission makes this visible to instructors.</li>
+              <li class="flex items-start gap-2"><strong>&bull;</strong> Submit working process files and conversation transcripts&mdash;as practiced in ECON 606 at Merrick&mdash;to demonstrate your learning journey.</li>
+            </ul>
+          </div>
+          <div class="bg-rose-50 rounded-2xl p-8 border border-rose-100">
+            <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Don't outsource judgment</h3>
+            <ul class="space-y-3 text-slate-700 text-sm">
+              <li class="flex items-start gap-2"><strong>&bull;</strong> Do not submit AI output as final work without review and revision. AI can produce convincing but flawed outputs&mdash;the Civic Champion calls it an "over-eager assistant," not a decision-maker.</li>
+              <li class="flex items-start gap-2"><strong>&bull;</strong> Do not conceal model use when a course requires disclosure. Transparency is not optional&mdash;it's a core CAILI value grounded in the Prudent Professor's insistence on clear guidelines.</li>
+              <li class="flex items-start gap-2"><strong>&bull;</strong> Do not outsource legal, policy, or factual judgment to AI alone. The Labor Guardian reminds us: "Somehow, new technology always ends up exploiting the working class" when accountability disappears.</li>
+              <li class="flex items-start gap-2"><strong>&bull;</strong> Do not let AI erode your own critical thinking. The Adaptive Achiever's boundary&mdash;waiting until personal notes are complete before consulting AI&mdash;is a model for responsible use.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- AI in the Classroom -->
+        <div class="border-t border-slate-200 pt-12">
+          <h3 class="text-2xl font-bold text-slate-900 mb-2 text-center">AI in the Classroom: Practical Strategies</h3>
+          <p class="text-center text-slate-600 mb-8">Thoughtful and ethical integration grounded in UBalt's academic values and the <strong>AI Assessment Scale (AIAS)</strong>—a framework adopted by universities worldwide and endorsed by UNESCO. CAILI is happy to consult on your discipline.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-white rounded-xl p-5 border border-slate-200 border-l-4 border-l-emerald-500 hover:shadow-card transition-shadow">
+              <h4 class="text-sm font-bold text-slate-900 mb-1">Clarify Expectations Early</h4>
+              <p class="text-xs text-slate-600">Whether you embrace, permit, discourage, or prohibit AI, define boundaries in your syllabus. Share your rationale so students understand not just what is allowed, but why. Reference the AIAS to categorize assignments by acceptable AI use level.</p>
+            </div>
+            <div class="bg-white rounded-xl p-5 border border-slate-200 border-l-4 border-l-blue-500 hover:shadow-card transition-shadow">
+              <h4 class="text-sm font-bold text-slate-900 mb-1">Use the AI Assessment Scale</h4>
+              <p class="text-xs text-slate-600">The AIAS offers 5 tiers from No AI (Level 1) to Full AI Collaboration (Level 5). Used by schools and universities worldwide, it helps reduce ambiguity and set shared expectations with students.</p>
+            </div>
+            <div class="bg-white rounded-xl p-5 border border-slate-200 border-l-4 border-l-amber-500 hover:shadow-card transition-shadow">
+              <h4 class="text-sm font-bold text-slate-900 mb-1">Design for Process, Not Product</h4>
+              <p class="text-xs text-slate-600">Include brainstorming, drafts, revision, and reflection. Breaking assessments into stages emphasizes student process, develops metacognition, and reduces the incentive to rely heavily on AI.</p>
+            </div>
+            <div class="bg-white rounded-xl p-5 border border-slate-200 border-l-4 border-l-purple-500 hover:shadow-card transition-shadow">
+              <h4 class="text-sm font-bold text-slate-900 mb-1">Personalize &amp; Localize Prompts</h4>
+              <p class="text-xs text-slate-600">Create prompts drawing on lived experiences, local Baltimore issues, or current events—areas where AI is less effective. These assignments are more resistant to misuse and more meaningful.</p>
+            </div>
+            <div class="bg-white rounded-xl p-5 border border-slate-200 border-l-4 border-l-rose-500 hover:shadow-card transition-shadow">
+              <h4 class="text-sm font-bold text-slate-900 mb-1">Intentionally Integrate AI</h4>
+              <p class="text-xs text-slate-600">Give students structured opportunities: have AI generate arguments for students to critique, compare AI-generated writing to human-authored texts, or submit annotated drafts explaining AI tool usage.</p>
+            </div>
+            <div class="bg-white rounded-xl p-5 border border-slate-200 border-l-4 border-l-cyan-500 hover:shadow-card transition-shadow">
+              <h4 class="text-sm font-bold text-slate-900 mb-1">Rethink Mastery &amp; Assessment</h4>
+              <p class="text-xs text-slate-600">With AI increasingly accessible, reassess how learning is demonstrated. Focus more on reasoning than recall, more on developmental learning than final deliverables alone.</p>
+            </div>
+            <div class="bg-white rounded-xl p-5 border border-slate-200 border-l-4 border-l-orange-500 hover:shadow-card transition-shadow">
+              <h4 class="text-sm font-bold text-slate-900 mb-1">Emphasize Iteration</h4>
+              <p class="text-xs text-slate-600">Proposals, drafts, peer reviews—these stages give you better visibility into student learning. As practiced in ECON 606, process files demonstrate the learning journey, not just the destination.</p>
+            </div>
+            <div class="bg-white rounded-xl p-5 border border-slate-200 border-l-4 border-l-indigo-500 hover:shadow-card transition-shadow">
+              <h4 class="text-sm font-bold text-slate-900 mb-1">Support Multiple Modalities</h4>
+              <p class="text-xs text-slate-600">Assessments don't need to be papers. Encourage multimedia, presentations, portfolios, or real-world applications like PSAs or client briefs—formats that require skills AI can't replicate.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <p class="text-sm text-slate-600">
+            Review UBalt's
+            <a href="https://www.ubalt.edu/policies/administrative/I-2.3_Academic_Integrity.pdf" target="_blank" rel="noopener noreferrer" class="text-[#40C1BB] hover:underline font-medium">Academic Integrity Policy</a>,
+            <a href="https://www.ubalt.edu/ait" target="_blank" rel="noopener noreferrer" class="text-[#40C1BB] hover:underline font-medium">AI in the Classroom guidance</a>,
+            and the <a href="https://www.ubalt.edu/_migrated-binaries/ubalt.edu/about-ub/offices-and-services/dean-of-students/AI+Guidance+.pdf" target="_blank" rel="noopener noreferrer" class="text-[#40C1BB] hover:underline font-medium">UBalt Generative AI Guidelines</a> (developed with the Office of Academic Affairs) for classroom expectations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline / History Section -->
+    <section id="timeline" class="py-20 bg-white reveal">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">Our Journey</p>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">UBalt's AI Timeline</h2>
+          <p class="text-slate-600 mt-2">From the first faculty workshop in March 2023 through the third annual AI Summit in June 2026.</p>
+        </div>
+
+        <div class="relative timeline-line ml-4 sm:ml-0">
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">March 2023</p>
+            <h4 class="text-lg font-bold text-slate-900">"Learn with Me about ChatGPT" Workshop</h4>
+            <p class="text-sm text-slate-600 mt-1">First faculty workshop exploring generative AI applications in teaching.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">April 2023</p>
+            <h4 class="text-lg font-bold text-slate-900">AI Teaching Talk Series</h4>
+            <p class="text-sm text-slate-600 mt-1">Weekly one-hour sessions on AI topics related to teaching and learning.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">May 2023</p>
+            <h4 class="text-lg font-bold text-slate-900">Joined Ithaka S+R Cohort</h4>
+            <p class="text-sm text-slate-600 mt-1">Making AI Generative for Higher Education initiative to advance AI integration.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">Fall 2023</p>
+            <h4 class="text-lg font-bold text-slate-900">AI Landscape Assessment &amp; White Paper</h4>
+            <p class="text-sm text-slate-600 mt-1">Surveys of faculty, staff, and students. Published white paper. Created two 5-week async AI courses in Canvas LMS.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">Winter / Spring 2024</p>
+            <h4 class="text-lg font-bold text-slate-900">Research Publication &amp; Interviews</h4>
+            <p class="text-sm text-slate-600 mt-1">Shared findings at conferences. Completed 12 de-identified interviews across all four schools on AI in teaching, research, and operations.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">March 2024</p>
+            <h4 class="text-lg font-bold text-slate-900">"From Chalkboards to Chatbots" Workshop</h4>
+            <p class="text-sm text-slate-600 mt-1">One-day in-person workshop led by faculty experienced in classroom AI use.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">June 2024</p>
+            <h4 class="text-lg font-bold text-slate-900">Inaugural AI Summit 2024</h4>
+            <p class="text-sm text-slate-600 mt-1">Three-day event featuring industry thought leaders and community organizations. Updated student and faculty AI courses.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">Fall 2024</p>
+            <h4 class="text-lg font-bold text-slate-900">OER Courses &amp; AI Work Groups</h4>
+            <p class="text-sm text-slate-600 mt-1">Published "From Chalkboards to Chatbots" in Pressbooks. Launched Generative AI PLC and collaborative work groups.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">June 2025</p>
+            <h4 class="text-lg font-bold text-slate-900">2nd Annual AI Summit 2025</h4>
+            <p class="text-sm text-slate-600 mt-1">One-day event with panels, presentations, and demos featuring State of Maryland leadership and community leaders.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">July 2025</p>
+            <h4 class="text-lg font-bold text-slate-900">CAILI Officially Launches</h4>
+            <p class="text-sm text-slate-600 mt-1">The Center for AI Learning and Community-Engaged Innovation opens under founding director Dr. Jessica A. Stansbury.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">September 2025</p>
+            <h4 class="text-lg font-bold text-slate-900">Campus-Wide BoodleBox Partnership</h4>
+            <p class="text-sm text-slate-600 mt-1">Free, unlimited access to GPT-4o, Claude, Gemini, Perplexity, and more for all students, faculty, and staff&mdash;a higher-ed first.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">January&ndash;March 2026</p>
+            <h4 class="text-lg font-bold text-slate-900">AI-Enabled Business Accelerator</h4>
+            <p class="text-sm text-slate-600 mt-1">Inaugural cohort of 8 Baltimore entrepreneurs applying AI across healthcare, energy, education, housing, and small business. Partners: Techstars, Conscious Venture Lab.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">Spring 2026</p>
+            <h4 class="text-lg font-bold text-slate-900">AI Navigator Fellows Program</h4>
+            <p class="text-sm text-slate-600 mt-1">Cross-disciplinary faculty cohort serving as departmental AI thought leaders. Fellows tested tools in their own courses and developed original Signature Projects.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">May 6, 2026</p>
+            <h4 class="text-lg font-bold text-slate-900">AI Navigator Showcase &amp; Year One Review</h4>
+            <p class="text-sm text-slate-600 mt-1">Inaugural cohort presented classroom-ready AI projects. CAILI published its first-year impact report: "From Campus to City."</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[18px] top-5 w-4 h-4 bg-[#40C1BB] border-4 border-[#40C1BB]/30 rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">June 4, 2026</p>
+            <h4 class="text-lg font-bold text-slate-900">3rd Annual AI Summit: "Building Baltimore's AI Future"</h4>
+            <p class="text-sm text-slate-600 mt-1">Citywide convening featuring the "Understanding Baltimore's AI Ecosystem" persona report with Mindgrub. Cross-sector dialogue on positioning Baltimore as a leading AI city.</p>
+          </div>
+          <div class="relative pl-14 sm:pl-16 py-4">
+            <div class="absolute left-[18px] top-5 w-4 h-4 bg-[#40C1BB] border-4 border-[#40C1BB]/30 rounded-full z-10"></div>
+            <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">June 2026</p>
+            <h4 class="text-lg font-bold text-slate-900">"Understanding Baltimore's AI Ecosystem" Report</h4>
+            <p class="text-sm text-slate-600 mt-1">CAILI and Mindgrub publish the Community-Grounded Compass&mdash;six personas mapping how Baltimoreans use, question, resist, and shape AI. Covered by Technical.ly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-[#011221] text-white reveal">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <p class="text-[#40C1BB] font-bold uppercase tracking-wider text-sm mb-4">Start your next step</p>
+        <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight mb-6">Enrich Your Academic Journey</h2>
+        <p class="text-white/60 text-lg mb-8 max-w-2xl mx-auto">Explore a more grounded way to launch live tools, support teaching, and guide responsible AI adoption across UBalt.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://boodlebox.ai/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3.5 bg-[#40C1BB] hover:bg-[#35a8a2] text-[#011221] text-sm font-bold rounded-full shadow-navy hover:shadow-xl transition-all uppercase tracking-wider">Log in with BoodleBox</a>
+          <a href="https://www.ubalt.edu/ait" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3.5 bg-transparent border-2 border-white/20 hover:border-white/40 text-white text-sm font-bold rounded-full hover:bg-white/5 transition-all uppercase tracking-wider">Learn more about CAILI</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- UBalt Official Footer -->
+  <footer class="border-t border-slate-200 pt-7 bg-white">
+    <div class="max-w-[1800px] mx-auto px-5 sm:px-10 lg:px-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8">
+        <!-- Left: Logo + Address + Social -->
+        <div>
+          <div class="mb-6">
+            <img src="public/logo/logo-university-of-baltimore.png" onerror="this.src='https://placehold.co/240x50?text=University+of+Baltimore'" alt="University of Baltimore" class="h-12 w-auto mb-4">
+          </div>
+          <address class="not-italic text-sm text-slate-700 leading-relaxed mb-4">
+            <p class="font-semibold text-slate-900 mb-1">The University of Baltimore</p>
+            <p>1420 N. Charles St.<br>Baltimore, MD 21201</p>
+          </address>
+          <!-- Social Icons -->
+          <div class="flex gap-3">
+            <a href="https://www.facebook.com/ubaltimore" target="_blank" rel="noopener" class="text-slate-600 hover:text-[#1877f2] transition-colors" title="Facebook" aria-label="Facebook">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="16" fill="currentColor"/><path d="M19.595 17l.456-2.894h-2.809v-1.881c0-.792.392-1.565 1.646-1.565h1.295V8.194c-.754-.12-1.516-.185-2.28-.185-2.312 0-3.82 1.388-3.82 3.898v2.207H11.52V17h2.562v7h3.16v-7h2.353z" fill="white"/></svg>
+            </a>
+            <a href="http://instagram.com/ubaltmain" target="_blank" rel="noopener" class="text-slate-600 hover:text-[#e4405f] transition-colors" title="Instagram" aria-label="Instagram">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="16" fill="currentColor"/><path d="M13.189 16.097c0-1.608 1.304-2.912 2.914-2.912s2.914 1.304 2.914 2.912-1.304 2.913-2.914 2.913-2.914-1.305-2.914-2.913zm-1.576 0c0 2.478 2.01 4.487 4.49 4.487s4.489-2.01 4.489-4.487-2.01-4.486-4.49-4.486-4.489 2.009-4.489 4.486zm8.107-4.664a1.05 1.05 0 100-2.098 1.05 1.05 0 000 2.098zM12.57 23.21c-.852-.04-1.315-.181-1.623-.301a2.72 2.72 0 01-1.006-.654 2.72 2.72 0 01-.654-1.004c-.12-.308-.262-.77-.3-1.623-.043-.921-.051-1.198-.051-3.53 0-2.334.009-2.61.05-3.531.04-.852.182-1.315.301-1.623.159-.408.348-.7.654-1.005s.596-.496 1.006-.654c.307-.12.77-.262 1.623-.3.921-.043 1.198-.051 3.532-.051s2.61.009 3.533.05c.852.04 1.315.182 1.623.301.408.158.7.348 1.006.654s.495.597.654 1.005c.12.308.262.77.3 1.622.043.922.051 1.198.051 3.531s-.009 2.61-.05 3.531c-.04.852-.182 1.315-.301 1.623-.159.408-.348.699-.654 1.004s-.597.496-1.006.654c-.307.12-.77.262-1.623.3-.921.043-1.198.051-3.533.051s-2.61-.009-3.532-.05zm-.073-15.797c-.93.043-1.567.19-2.122.406a4.42 4.42 0 00-1.549 1.008 4.42 4.42 0 00-1.008 1.548c-.216.555-.364 1.19-.406 2.12-.043.932-.053 1.23-.053 3.603s.01 2.67.053 3.602c.042.93.19 1.565.406 2.12.223.575.522 1.063 1.008 1.548s.974.786 1.549 1.008c.556.216 1.19.364 2.121.406.933.042 1.23.053 3.604.053s2.672-.01 3.604-.053c.93-.043 1.567-.19 2.122-.406a4.42 4.42 0 001.549-1.008 4.42 4.42 0 001.008-1.548c.216-.556.364-1.19.406-2.121.042-.932.053-1.23.053-3.602s-.01-2.67-.053-3.603c-.042-.93-.19-1.565-.406-2.12a4.42 4.42 0 00-1.008-1.549 4.42 4.42 0 00-1.549-1.008c-.555-.216-1.19-.363-2.12-.406C18.775 7.37 18.477 7.36 16.103 7.36s-2.672.01-3.605.053z" fill="white"/></svg>
+            </a>
+            <a href="http://youtube.com/ubalt" target="_blank" rel="noopener" class="text-slate-600 hover:text-[#ff0000] transition-colors" title="YouTube" aria-label="YouTube">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="16" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M22.967 9.981c.786.213 1.404.832 1.613 1.618.38 1.425.38 4.401.38 4.401s0 2.976-.38 4.402c-.212.788-.83 1.408-1.614 1.617-1.421.381-7.126.381-7.126.381s-5.702 0-7.127-.381c-.786-.212-1.404-.829-1.613-1.617-.38-1.426-.38-4.402-.38-4.402s0-2.976.38-4.401c.212-.788.83-1.408 1.613-1.618 1.425-.38 7.127-.38 7.127-.38s5.705 0 7.127.38zm-4.21 6.019l-4.739 2.743v-5.486l4.739 2.743z" fill="white"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/edu/school?id=18565" target="_blank" rel="noopener" class="text-slate-600 hover:text-[#0a66c2] transition-colors" title="LinkedIn" aria-label="LinkedIn">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="16" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.883 10.444c0-.797-.646-1.444-1.441-1.444-.798 0-1.442.647-1.442 1.444 0 .798.644 1.445 1.442 1.445.795 0 1.441-.647 1.441-1.445zM12.686 21h-2.489v-8.015h2.489V21zm3.945-8.015h-2.386V21h2.487v-3.965c0-1.046.197-2.058 1.491-2.058 1.275 0 1.293 1.195 1.293 2.125V21H22v-4.397c0-2.158-.465-3.818-2.981-3.818-1.21 0-2.022.664-2.354 1.294h-.034v-1.094z" fill="white"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@ubaltmain" target="_blank" rel="noopener" class="text-slate-600 hover:text-[#000000] transition-colors" title="TikTok" aria-label="TikTok">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="16" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M18.5 6c.4 2 2 3.6 4 4v2.6c-1.4 0-2.7-.4-4-1.1v5.7a5.5 5.5 0 11-5.5-5.5c.3 0 .7 0 1 .1v2.7c-.3-.1-.7-.2-1-.2a2.8 2.8 0 100 5.6 2.8 2.8 0 002.8-2.8V6h2.7z" fill="white"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Contact + Quick Links + CAILI -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <!-- Contact Info -->
+          <div>
+            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">Contact</h4>
+            <address class="not-italic text-sm text-slate-600 space-y-2">
+              <p class="font-semibold text-slate-800">The University of Baltimore</p>
+              <p>1420 N. Charles St.<br>Baltimore, MD 21201</p>
+            </address>
+            <div class="mt-3 space-y-1 text-sm">
+              <p class="font-medium text-slate-800">General Information</p>
+              <a href="tel:+14108374200" class="text-slate-600 hover:text-[#40C1BB] transition-colors">410.837.4200</a>
+              <p class="font-medium text-slate-800 mt-2">Office of Admission</p>
+              <a href="tel:+18772775892" class="text-slate-600 hover:text-[#40C1BB] transition-colors">1.877.ApplyUB</a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">Quick Links</h4>
+            <div class="space-y-1.5">
+              <a href="https://www.ubalt.edu/footer/consumer-information.cfm" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] transition-colors">Consumer Information</a>
+              <a href="https://www.ubalt.edu/footer/web-accessibility.cfm" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] transition-colors">Web Accessibility</a>
+              <a href="https://www.ubalt.edu/student-life/campus-resources/parking-and-public-transportation/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] transition-colors">Parking</a>
+              <a href="https://www.ubalt.edu/admission-and-aid/visit-and-connect/directions/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] transition-colors">Map &amp; Directions</a>
+              <a href="https://www.ubalt.edu/footer/policies-and-procedures.cfm" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] transition-colors">Policy Guide</a>
+              <a href="https://www.ubalt.edu/footer/privacy-statement.cfm" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] transition-colors">Privacy Statement</a>
+              <a href="https://www.ubalt.edu/student-life/campus-resources/safety-and-security/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] transition-colors">Campus Safety</a>
+              <a href="https://www.ubalt.edu/about/offices-and-services/title-ix/" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] transition-colors">Title IX</a>
+              <a href="https://marylandconnect.wd1.myworkdayjobs.com/UBaltCareers" target="_blank" rel="noopener" class="block text-xs text-slate-600 hover:text-[#40C1BB] transition-colors">Job Listings</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAILI Credits + Copyright -->
+      <!-- CAILI Credits + Copyright -->      <div class="py-4 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-slate-400 bg-[#e8f8f7] -mx-5 sm:-mx-10 lg:-mx-20 px-5 sm:px-10 lg:px-20 rounded-none">
+        <p>CAILI AI Studio &mdash; programmed by Jenish Amatya and Ranjith Keerikkattil.</p>
+        <p>&copy; 2026 The University of Baltimore is part of the University System of Maryland.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile Nav Drawer
+    const navToggle = document.getElementById('nav-toggle');
+    const navClose = document.getElementById('nav-close');
+    const megaMenu = document.getElementById('mega-menu');
+    const navBackdrop = document.getElementById('nav-backdrop');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function openNav() {
+      megaMenu.classList.remove('translate-x-full');
+      navBackdrop.classList.remove('hidden');
+      setTimeout(() => navBackdrop.classList.remove('opacity-0'), 10);
+      navToggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeNav() {
+      megaMenu.classList.add('translate-x-full');
+      navBackdrop.classList.add('opacity-0');
+      setTimeout(() => navBackdrop.classList.add('hidden'), 300);
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    navToggle.addEventListener('click', openNav);
+    navClose.addEventListener('click', closeNav);
+    navBackdrop.addEventListener('click', closeNav);
+    navLinks.forEach(link => link.addEventListener('click', closeNav));
+
+    // Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Text Rotator
+    const rotatorText = document.getElementById('banner-rotator-text');
+    if(rotatorText) {
+      const messages = [
+        "\"Understanding Baltimore's AI Ecosystem\" persona report",
+        "ECON and OPM classroom simulations",
+        "Course-specific study support for MBA learners",
+        "Faculty-ready instructions for BoodleBox classrooms",
+        "AI Navigator Fellows classroom projects"
+      ];
+      let msgIndex = 0;
+      setInterval(() => {
+        rotatorText.style.opacity = 0;
+        setTimeout(() => {
+          msgIndex = (msgIndex + 1) % messages.length;
+          rotatorText.textContent = messages[msgIndex];
+          rotatorText.style.opacity = 1;
+        }, 300);
+      }, 3500);
+    }
+
+    // Filters for Use Cases
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const useItems = document.querySelectorAll('.use-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-[#40C1BB]', 'text-[#011221]', 'active');
+          b.classList.add('bg-white', 'text-slate-600');
+        });
+        btn.classList.remove('bg-white', 'text-slate-600');
+        btn.classList.add('bg-[#40C1BB]', 'text-[#011221]', 'active');
+
+        const filter = btn.getAttribute('data-filter');
+        useItems.forEach(item => {
+          if(filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
