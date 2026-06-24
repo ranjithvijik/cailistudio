@@ -1,73 +1,127 @@
-CodeX Prompt: Update the CAILI AI Studio Landing Page
+# CAILI AI Studio — Design Evolution (v2 → Current)
 
-This specification describes how to revise the existing CAILI AI Studio landing page based on the latest feedback.  The goal is to bring the design closer to the aesthetic and polish of superagent.com while emphasizing the University of Baltimore’s identity and mission.  The updated design should be full‑bleed, refined and expressive, with graduate‑level use‑case prompts and a stronger ethics narrative.
+This file documents the evolution of the CAILI AI Studio landing page from the v2 design specification to the current production version.
 
-Full bleed layout
-	•	Remove the fixed container width and margins.  Set --container-width to 100% or remove it entirely and adjust .container so that sections and backgrounds extend to the edges of the viewport.  Content can still be centered within their sections, but backgrounds should cover the entire width.
-	•	The top navigation bar, hero section and all panels should span the full width of the browser window.  Avoid unused whitespace at the sides.
-	•	Use responsive CSS to ensure that this full‑bleed design works smoothly on large screens as well as mobile devices.
+## Timeline of Design Changes
 
-Typography and spacing
-	•	Increase the base font size for body text to around 1.1rem and set line-height to at least 1.8 for better readability.
-	•	Reduce negative letter-spacing—use 0 or -0.01em—and add more vertical space between paragraphs and sections.  Give headings ample breathing room above and below.
-	•	Scale up heading sizes slightly (e.g. increase clamp values by 0.2–0.4rem) and lighten the letter spacing on headings for a more airy feel.
+### Phase 1: Original Build (2025)
+- Superagent.com-inspired design: purple-to-pink gradients, beige/cream base (#F9F5EB), light pastel cards
+- Two-column feature panels: MBA AI Workflows + BoodleBox Integration
+- Basic use-case grid with MBA and Law cards
+- Simple ethics section with a single pass/fail list
+- Scroll-triggered reveal animations
 
-Personalised tone and UBalt elements
-	•	Incorporate more of the University of Baltimore’s identity.  Display the UBalt crest or tagline in the header and adjust copy throughout the page to reference the University explicitly.  For example: “A campus AI adoption accelerator for the University of Baltimore’s Merrick School of Business, School of Law and Master of Public Administration programs.”
-	•	Use language that speaks to students and faculty directly, emphasising community, collaboration and real‑world impact.
-	•	Keep CAILI’s mission front and centre.  The hero paragraph should mention that CAILI’s goal is to equip faculty, students and the Baltimore community to responsibly engage with generative AI through ethical, equitable and interdisciplinary learning and research ￼.
+### Phase 2: UBalt Brand Overlay
+- Shifted from superagent aesthetic to ubalt.edu brand
+- Replaced purple-pink with navy (#011221) + teal (#40C1BB) color system
+- Replaced beige with white + slate-50 backgrounds
+- Added UBalt official header (navy, 66px, logo + search + MENU)
+- Added UBalt official footer with social icons
+- Implemented mega menu drawer with full UBalt navigation (Academics, Admission & Aid, Student Life, About, Schools, colored CTAs)
+- Replaced gradient accent from purple-pink to teal-cyan (#40C1BB → #5EEAD4 → #2DD4BF)
 
-Scroll animations
-	•	Add a lightweight JavaScript snippet that uses the IntersectionObserver API to detect when each section enters the viewport.  When at least 20% of a section is visible, add a class like .in-view to that section.
-	•	In the CSS, define a fade‑in and slight slide‑up animation for elements inside .in-view sections.  Set opacity: 0 and transform: translateY(2rem) initially and transition to full opacity and zero translation over 400–600 ms.
-	•	Apply these animations to main sections (hero copy, feature panels, adoption banner, value cards, use cases, ethics, CTA) so they animate into view as the user scrolls down the page.
+### Phase 3: Container Width Overhaul
+- Changed from `max-w-7xl` (1280px) to `max-w-[1800px]` to match ubalt.edu
+- Changed horizontal padding from 32px to 80px (desktop), matching UBalt's `.container` 80px gutter
+- Tightened section spacing from `py-24` (96px) to `py-20` (80px)
+- Reduced card shadows from heavy `0 4px 20px` to subtle `0 1px 3px`
 
-Highlight cards enhancements
-	•	Increase padding and border radius for the four highlight cards in the hero section; add a soft pastel background or gradient to each card and apply a gentle drop shadow (box-shadow with 0 1rem 2rem var(--color-shadow)).
-	•	Add a unique icon to each card.  Use Font Awesome or similar icons (e.g. scales for ethics, lightbulb for adoption, layers for discipline workflows, and users for community).  Place the icon at the start of each card.
-	•	Increase font size for the card headings and separate them from the card body with a subtle margin.
+### Phase 4: Research-Driven Content Expansion
 
-Revised highlight card content
-	1.	Ethical AI in Your Discipline — Focus on fairness, equity, transparency and academic integrity; explain that CAILI’s mission is to equip faculty, students and the Baltimore community to engage responsibly with AI ￼.
-	2.	Practical AI Adoption — Highlight how CAILI AI Studio provides guided workflows, curated tools and tailored prompts to streamline research, writing and analysis.
-	3.	Discipline‑Specific Workflows — Point out that MBA, School of Law and MPA use cases are built into the platform to help users get started quickly.
-	4.	Community & Collaboration — Emphasise BoodleBox integration and collaborative features that encourage shared learning and collective intelligence.
+**Persona Compass Section (new):**
+- Added 6 persona cards based on "Understanding Baltimore's AI Ecosystem" report with Mindgrub
+- Persona color coding: Active (sky), Hesitant (amber), Resister (pink)
+- Each card: initials avatar, quote, background, needs & fears, CAILI Solution description
+- Common Themes chips (AI as Calculator, AI Training Lacking, Environmental Impact)
+- What Now callout with Dr. Stansbury's contact
+- Where We Are / Where We Want to Be cards
 
-Use‑case section updates
-	•	Change the filter label “Law” to “School of Law”.
-	•	Add a new filter label “MPA” for the Master of Public Administration program.
-	•	For the MPA category, include at least three cards:
-	•	Policy Research & Legislative Analysis — Use AI to analyse and summarise legislative proposals, policy documents and stakeholder perspectives.  Example prompt: “Summarise the key provisions of the Maryland Sustainable Communities Act of 2025 and identify potential impacts on Baltimore’s economic development and social equity.”
-	•	Grant Writing & Funding Research — Use AI to identify funding opportunities and generate grant proposals.  Example prompt: “Draft a grant proposal outline for a public health initiative aimed at reducing food insecurity in West Baltimore, including a situational analysis, objectives and evaluation metrics.”
-	•	Community Needs Assessment & Program Evaluation — Use AI to compile demographic and socio‑economic data and evaluate program effectiveness.  Example prompt: “Compile and summarise the most recent demographic and socioeconomic data for the West Baltimore community and identify key challenges and opportunities for local nonprofit organisations.”
-	•	Revise the existing MBA and School of Law cards with stronger, graduate‑level prompts:
-	•	MBA – Market Research & Competitive Analysis: “Conduct a competitive analysis of mid‑sized Maryland renewable energy startups, highlighting the top five players, their market strategies, growth trajectories and opportunities for differentiation.  Provide charts and credible citations.”
-	•	MBA – Business Writing & Case Analysis: “Compose a strategic analysis of XYZ Corp’s decision to adopt generative AI for product development, including benefits, risks, market positioning and recommendation.”
-	•	MBA – Idea Validation & Venture Testing: “Generate a detailed validation plan for a digital mental health platform designed for college students, covering market potential, user personas, revenue models and risk assessment.”
-	•	School of Law – Case Law Research & Summarisation: “Summarise three landmark Maryland appellate decisions on freedom of speech in public schools and explain how these precedents apply to the case of Smith v. UBalt.”
-	•	School of Law – Drafting Motions & Briefs: “Draft a motion for summary judgment in a hypothetical case involving a negligence claim against a local nonprofit.  Include relevant case law, statutory citations and legal arguments.”
-	•	School of Law – Statutory Analysis & Interpretation: “Analyse the Maryland Consumer Protection Act and outline the key elements that must be proved in a deceptive trade practice claim, with examples of how courts have applied the statute.”
+**Timeline Section (new):**
+- 16 entries from March 2023 through June 2026
+- Sources: UBalt official timeline PDF, CAILI Year One article, BoodleBox partnership article, AI Summit announcements, Technical.ly coverage
 
-Ethics section enhancements
-	•	Expand the ethics section into four cards, each covering one of CAILI’s core ethical principles:
-	1.	Fairness & Equity — Describe how users should leverage AI to ensure diverse perspectives and avoid biases.  Use a pastel green background.
-	2.	Transparency — Encourage users to cite sources and disclose when AI has assisted their work.  Use a pastel blue background.
-	3.	Academic Integrity — Explain that AI should support learning and idea development, but that users must produce their own analyses and writing.  Use a pastel yellow background.
-	4.	Community Engagement — Highlight how AI can be used to tackle real‑world problems in partnership with the Baltimore community, emphasising CAILI’s mission of social mobility and impact ￼.  Use a pastel pink background.
-	•	Provide a “Do’s and Don’ts” list under these cards that clarifies appropriate vs. inappropriate AI use in academic settings.
+**BoodleBox Section Enhanced:**
+- Added real BoodleBox features: Coach Mode, Custom AI Assistants, Knowledge Foundation
+- FERPA compliant + SOC 2 certified
+- 96% token reduction technology
+- Lifelong portability (students keep access after graduation)
+- "Data stays yours — never trains models on user content"
+- Mockup now shows: 4 shared rooms (including AI Navigator Cohort), 4 active model tags (GPT-4o, Claude, Gemini, Perplexity), 3-message chat
 
-Call‑to‑action section
-	•	Replace the heading “Ready to start your AI journey?” with “Enrich Your Academic Journey with CAILI AI Studio”.
-	•	Revise the subheading to: “Discover how AI can enhance your research, writing and learning across UBalt’s MBA, School of Law and MPA programs.”
-	•	Leave the buttons as “Log in with BoodleBox” and “Learn more about CAILI”, but ensure they are styled consistently with the new design.  The primary button should use a gradient fill and the secondary button should have a subtle border.
+**What We Offer Cards:**
+- Added AI-Enabled Business Accelerator (9-week program, 8 founders, healthcare/energy/education/housing)
+- Added AI Navigator Fellows to Faculty Education card
 
-Technical & styling updates
-	•	Set .container { width: 100%; margin: 0; padding: 0; } and remove any max‑width limits to achieve a full‑bleed look.
-	•	Increase the size of the University of Baltimore and BoodleBox logos in the header and ensure they remain responsive on small screens.
-	•	Use consistent pastel backgrounds for the hero highlight cards and ethics cards; adjust the --color-bg-strong and related variables to soften the overall palette.
-	•	Implement subtle pastel gradients in the adoption banner and CTA card backgrounds.
-	•	Ensure that the filter buttons for “All”, “MBA”, “School of Law” and “MPA” clearly indicate which category is selected by changing background colour and text colour.
+**Use Cases Expanded:**
+- Added AI-Enabled Venture Building card (AI Accelerator category)
+- Added real tool links: ECON Simulator (Amplify), ECON 606 Study Bot (BoodleBox), OPM Simulator (Streamlit), QuantLab (Streamlit)
 
-⸻
+### Phase 5: Persona CAILI Solutions Deep Research
+Each persona's CAILI Solution block was rewritten with specific, referenced program details:
 
-This updated specification should guide CodeX to generate a refined version of the CAILI AI Studio landing page.  It addresses the full‑bleed layout, improves typography, personalises the tone, adds scroll animations, enhances the hero highlights, updates the use‑case categories and prompts, revitalises the ethics section, and refines the call‑to‑action, all while maintaining CAILI’s mission at its core.
+| Persona | Enhancement |
+|---|---|
+| Civic Champion | Community-Grounded Compass with Mindgrub, "over-eager assistant" philosophy, 4-lens framework |
+| Student Superuser | ECON 606 Study Bot (multi-agent), EconSim (78 modules + FRED), Coach Mode, process files |
+| Adaptive Achiever | Anti-hallucination design (course-grounded bots with citations), Coach Mode metacognitive skills |
+| Prudent Professor | AIAS-based Policy Generator, Instructions Generator, AI Navigator Fellows program |
+| Hometown Hero | Live Prototypes + AI Business Accelerator, Community Lens, free BoodleBox |
+| Labor Guardian | "Enhance—rather than replace" philosophy, transparency architecture, AI Accelerator creates jobs |
+
+### Phase 6: Typography Overhaul
+- Updated h2s from `text-3xl md:text-4xl font-bold` to `text-display-md md:text-display-lg font-black uppercase tracking-tight`
+- Added `display-xl` (7rem), `display-lg` (5rem), `display-md` (3.5rem) to Tailwind config
+- Hero h1: `text-display-xl` with 2-line split pattern ("CAILI AI" + "Studio")
+- All section h2s now uppercase matching ubalt.edu
+
+### Phase 7: Responsible AI Section Deep Research
+
+**Intro paragraph:** Now references UBalt Generative AI Guidelines (Office of Academic Affairs), EDUCAUSE AI Ethical Guidelines, and 6 personas
+
+**4-lens cards enhanced:**
+- Fairness: "Check for missing voices, uneven impact — use AI to widen perspective, not narrow it"
+- Transparency: "Every CAILI Study Bot cites exactly which teaching materials inform its responses — no black boxes"
+- Integrity: "BoodleBox process-file submission and Coach Mode make AI use visible and auditable"
+- Community: "The Community Lens ensures tools are built with communities, not just for them"
+
+**Do/Don't guidance:** Expanded from 3+3 to 4+4 items, each tied to specific persona voices (Civic Champion's "over-eager assistant", Prudent Professor's insistence on clear guidelines, Labor Guardian's concern about exploitation, Adaptive Achiever's boundary of completing personal notes first)
+
+**Classroom strategies:** Expanded from 4 cards to 8 cards with unique accent colors:
+- Clarify Expectations (emerald), AI Assessment Scale (blue), Design for Process (amber), Personalize & Localize (purple), Intentionally Integrate AI (rose), Rethink Mastery (cyan), Emphasize Iteration (orange), Support Multiple Modalities (indigo)
+
+**Policy links:** Added UBalt Generative AI Guidelines PDF link (developed with Academic Affairs)
+
+### Phase 8: Navigation Redesign
+- Header height: `h-16` → `height:66px` (matches ubalt.edu)
+- Search icon: 24px → 46px (matches ubalt.edu)
+- MENU button: `text-xs font-bold` → `font-black text-2xl uppercase` (24px/900 weight, matches ubalt.edu)
+- Padding: `px-7 py-4` on MENU button (matches UBalt's generous padding)
+
+### Phase 9: Contrast Optimization
+- All `text-slate-500` → `text-slate-600` (~70 instances) for WCAG-AA compliance
+- Hero body: `text-white/50` → `text-white/65`
+- Hero subtitle: `text-white/80` → `text-white/90`
+- Bold highlights in hero: `text-white/80` → `text-white`
+- Gradient: 2-stop → 3-stop for more vivid rendering added `background-clip: text` standard property
+
+## Current File Metrics
+
+- **File size**: 120KB
+- **Lines**: 1,305
+- **Sections**: 10 content sections + header + footer + scripts
+- **Links**: 60+ hrefs (internal anchors + external ubalt.edu URLs + tool URLs)
+- **Tags**: Balanced (10 section, 292 div, 4 details/summary, all verified)
+- **Styling**: Tailwind CDN + 70-line inline `<style>` block (animations, gradient, timeline, mockup, scrollbar)
+
+## Key Design Decisions
+
+1. **Single file**: Everything in index.html — Tailwind CDN eliminates build step, inline `<style>` for custom CSS that Tailwind can't express (pseudo-elements, keyframes)
+2. **No javascript framework**: Vanilla JS for nav drawer, reveal animations, text rotator, and use-case filters
+3. **UBalt fidelity over innovation**: The design intentionally matches ubalt.edu closely — 1800px container, 80px gutters, 66px header, 46px search icon, 24px/900 weight MENU
+4. **Content sourced from real UBalt research**: All CAILI program details, BoodleBox features, and persona descriptions are sourced from:
+   - UBalt official news articles
+   - BoodleBox platform docs
+   - CAILI persona report with Mindgrub
+   - EDUCAUSE AI ethical guidelines
+   - AI Assessment Scale framework
+   - UBalt Generative AI Guidelines

@@ -1,107 +1,87 @@
 # CAILI AI Studio
 
-CAILI AI Studio is a static landing-page prototype for the University of Baltimore's Center for AI Learning and Community-Engaged Innovation. The site is designed as a mission-led front door for responsible AI adoption across the Merrick School of Business, the School of Law, and the College of Public Affairs.
+CAILI AI Studio is a static landing page for the University of Baltimore's **Center for AI Learning and Community-Engaged Innovation (CAILI)**. It serves as a mission-led front door for responsible AI adoption across UBalt's Merrick School of Business, School of Law, College of Public Affairs, and Yale Gordon College of Arts & Sciences.
 
-This version is built as a plain static site so it can be deployed quickly for demos without introducing framework overhead or visual drift.
-
-## What This Project Includes
-
-- A full landing page in `index.html`
-- All styling and motion in `styles.css`
-- University of Baltimore and BoodleBox logo assets in `public/logo/`
-- Design reference screenshots in `design/`
-- Netlify configuration in `netlify.toml`
-
-## Why It Is Structured This Way
-
-This project is intentionally simple:
-
-- No build step
-- No framework dependency
-- No bundler requirement
-- Easy GitHub upload
-- Easy Netlify deployment
-
-That makes it the safest setup for preserving the exact current content, layout, animation, and styling during deployment.
+Built with Tailwind CSS (CDN) for rapid styling, a full UBalt brand system, and zero build dependencies.
 
 ## Project Structure
 
 ```text
-CAILI-ai-studio/
-├── index.html
-├── styles.css
-├── netlify.toml
+CAILI AI Studio/
+├── index.html                      # Main landing page (Tailwind CDN, inline styles)
 ├── README.md
-├── public/
-│   └── logo/
-├── design/
-├── design-spec.md
-└── design-spec-v2.md
+├── design-spec.md                  # Original design specification
+├── design-spec-v2.md               # Second iteration design spec
+├── netlify.toml                    # Netlify static deploy config
+├── styles.css                      # Legacy — not actively used (keep for reference)
+├── .gitignore
+├── instructions-generator/
+│   └── index.html                  # Standalone tool page
+├── ai-syllabi-policy-generator/
+│   └── index.html                  # Standalone tool page
+├── public/logo/
+│   ├── logo-university-of-baltimore.png
+│   ├── boodlebox-logo-dark.png
+│   ├── boodlebox-logo-white.png
+│   ├── boodlebox-all-dark.png
+│   ├── boodlebox-all-white.png
+│   └── boodlebox-avatar.png
+├── Understanding Baltimores AI Ecosystem Report 2026- CAILI.pdf  # Persona research source
+└── design/
+    ├── .landing-page-superagent.png.icloud
+    └── .use-case-superagent.png.icloud
 ```
+
+## What This Project Includes
+
+- **index.html** (1,305 lines, 120KB) — Complete landing page with:
+  - Tailwind CSS via CDN with custom UBalt brand config
+  - UBalt navy (#011221) + teal (#40C1BB) brand system
+  - 6 persona cards (Civic Champion, Student Superuser, Adaptive Achiever, Prudent Professor, Hometown Hero, Labor Guardian) with deep-researched CAILI Solutions
+  - 16-entry timeline from March 2023 through June 2026
+  - Tool ecosystem section (ECON Simulator, ECON 606 Study Bot, OPM Simulator, QuantLab, Instructions Generator, AI Syllabi Policy Generator)
+  - BoodleBox Integration with Coach Mode, FERPA/SOC2, 96% token reduction
+  - UBalt official-style header (66px, 46px search icon, MENU at 24px/900 weight)
+  - UBalt official footer with 5 social icons (Facebook, Instagram, YouTube, LinkedIn, TikTok)
+  - 4-lens Responsible AI framework (Fairness, Transparency, Integrity, Community)
+  - 8 AI classroom strategy cards with AI Assessment Scale (AIAS) integration
+  - Timeline line gradient + 16 entries
+  - Mega menu drawer with full UBalt navigation + colored CTAs
+- **styles.css** — Legacy external stylesheet (not actively used; all styles are inline via Tailwind config + `<style>` block)
+
+## UBalt Brand System
+
+| Token | Value | Usage |
+|---|---|---|
+| `ubalt.navy` | `#011221` | Header, hero, footer, CTA sections |
+| `ubalt.teal` | `#40C1BB` | Accent buttons, links, section labels, timeline |
+| `ubalt.footer` | `#e8f8f7` | Footer copyright bar background |
+| `text-display-xl` | `7rem / 900` | Hero heading |
+| `text-display-lg` | `5rem / 900` | Section h2s (desktop) |
+| `text-display-md` | `3.5rem / 900` | Section h2s (mobile) |
+
+## Design Approach
+
+- **Tailwind first**: The page uses Tailwind CDN with a custom `tailwind.config` extending colors, font sizes, and box shadows. A small inline `<style>` block adds custom CSS for `.reveal` animations, `.gradient-text`, `.browser-mockup`, and the `.timeline-line` pseudo-element.
+- **UBalt identity**: The design faithfully reproduces the official ubalt.edu brand — navy background, teal accent, massive bold typography (80-119px), uppercase section headers, 1800px container with 80px gutters.
+- **Research-backed**: All content is sourced from UBalt news articles, the CAILI persona report with Mindgrub, BoodleBox platform documentation, and EDUCAUSE AI ethical guidelines.
 
 ## Local Preview
 
-Because this is a static site, you can preview it with any lightweight local server from the project root.
-
-Example:
-
 ```bash
 python3 -m http.server 8000
+# Open http://localhost:8000
 ```
 
-Then open:
+## Deploying
 
-```text
-http://localhost:8000
-```
-
-## Deploying To GitHub
-
-If the project has not been committed yet:
-
-```bash
-git add .
-git commit -m "Initial CAILI AI Studio landing page"
-```
-
-Then connect the local repository to GitHub:
-
-```bash
-git remote add origin <your-github-repo-url>
-git push -u origin main
-```
-
-## Deploying To Netlify
-
-This repository is already configured for a root-level static deploy.
-
-Netlify settings:
+This project deploys as a static site. Netlify settings:
 
 - Build command: leave blank
 - Publish directory: `.`
 
-If you import the GitHub repository into Netlify, it should detect `netlify.toml` automatically and publish the site from the root folder with no additional build setup.
-
-## Deployment Checklist
-
-Before sharing the demo:
-
-- Confirm `index.html` loads correctly from the root
-- Confirm logos load from `public/logo/`
-- Confirm the ethics interactions behave as expected in a modern browser
-- Confirm anchor links and external links open correctly
-- Confirm the site looks right on both desktop and mobile
-
-## Browser Notes
-
-The site uses modern CSS for some of the ethics interactions, including `:has(...)`, masks, gradients, and layered motion effects. Current versions of Chrome and Safari handle these well. Older browsers may still render the page, but some advanced interactions may appear more basic.
-
-## Notes For Demo Use
-
-- This is a prototype, not a production application
-- The login button currently routes to the public BoodleBox site
-- The deployment is optimized for visual fidelity and ease of presentation
+The `netlify.toml` file is pre-configured for root-level deploy.
 
 ## Credits
 
-Concept and prototype implementation for CAILI AI Studio by Jenish Amatya.
+Programmed for CAILI by Jenish Amatya and Ranjith Keerikkattil. Built with research from the "Understanding Baltimore's AI Ecosystem" report with Mindgrub, official UBalt news sources, and BoodleBox platform documentation.
