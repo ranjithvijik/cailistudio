@@ -75,12 +75,13 @@ python3 -m http.server 8000
 
 ## Deploying
 
-This project deploys as a static site. Netlify settings:
+This project deploys as a static site on **AWS Amplify**, connected to the `main` branch of the GitHub repository.
 
-- Build command: leave blank
-- Publish directory: `.`
+- **Live URL**: [https://main.dgiolfv4qrptj.amplifyapp.com](https://main.dgiolfv4qrptj.amplifyapp.com)
+- **Build settings**: Amplify auto-detects the static site — no build command required, publish directory is `.`
+- **Netlify**: The included `netlify.toml` also supports Netlify deployment as an alternative.
 
-The `netlify.toml` file is pre-configured for root-level deploy.
+The `netlify.toml` file is pre-configured for root-level deploy if using Netlify.
 
 ## Credits
 
