@@ -53,24 +53,59 @@
   </script>
 
   <style>
-    /* Custom CSS for specific interactive elements and animations */
-    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    /* ── Font loading ── */
+    html { scroll-behavior: smooth; }
+
+    /* ── Reveal animations ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
-    
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Staggered grid children ── */
+    .stagger-grid > * { opacity: 0; transform: translateY(20px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .stagger-grid.active > * { opacity: 1; transform: translateY(0); }
+    .stagger-grid.active > *:nth-child(1) { transition-delay: 0.05s; }
+    .stagger-grid.active > *:nth-child(2) { transition-delay: 0.1s; }
+    .stagger-grid.active > *:nth-child(3) { transition-delay: 0.15s; }
+    .stagger-grid.active > *:nth-child(4) { transition-delay: 0.2s; }
+    .stagger-grid.active > *:nth-child(5) { transition-delay: 0.25s; }
+    .stagger-grid.active > *:nth-child(6) { transition-delay: 0.3s; }
+    .stagger-grid.active > *:nth-child(7) { transition-delay: 0.35s; }
+    .stagger-grid.active > *:nth-child(8) { transition-delay: 0.4s; }
+
+    /* ── Gradient text ── */
     .gradient-text {
       background: linear-gradient(135deg, #40C1BB 0%, #5EEAD4 50%, #2DD4BF 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    
+
+    /* ── Card hover elevation ── */
+    .card-elevate { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease; }
+    .card-elevate:hover { transform: translateY(-4px); box-shadow: 0 12px 28px -8px rgba(1, 18, 33, 0.12); }
+
+    /* ── Tool card borders ── */
+    .tool-card { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease; }
+    .tool-card:hover { transform: translateY(-3px); border-color: #40C1BB; }
+
+    /* ── Button hover pulse ── */
+    .btn-glow { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+    .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 8px 24px -6px rgba(64, 193, 187, 0.35); }
+
+    /* ── Browser mockup ── */
     .browser-mockup {
       box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
       border: 1px solid #e5e7eb;
       background: #fff;
+      transition: box-shadow 0.4s ease;
     }
-    
-    /* Timeline styling */
+    .browser-mockup:hover { box-shadow: 0 24px 56px -12px rgba(1, 18, 33, 0.18); }
+
+    /* ── Timeline styling ── */
     .timeline-line::before {
       content: '';
       position: absolute;
@@ -81,12 +116,45 @@
       background: linear-gradient(to bottom, #40C1BB, #011221);
       border-radius: 4px;
     }
+    .timeline-entry { opacity: 0; transform: translateX(-12px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .timeline-section.active .timeline-entry { opacity: 1; transform: translateX(0); }
+    .timeline-section.active .timeline-entry:nth-child(1) { transition-delay: 0.05s; }
+    .timeline-section.active .timeline-entry:nth-child(2) { transition-delay: 0.1s; }
+    .timeline-section.active .timeline-entry:nth-child(3) { transition-delay: 0.15s; }
 
-    /* Custom Scrollbar */
+    /* ── Stat number animation ── */
+    .stat-number { display: inline-block; }
+    .stat-card { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease; }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -8px rgba(0,0,0,0.2); }
+
+    /* ── Persona card ── */
+    .persona-badge { transition: transform 0.3s ease; }
+    .persona-card:hover .persona-badge { transform: scale(1.05); }
+
+    /* ── Image reveal ── */
+    .img-reveal { opacity: 0; transform: scale(0.97); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+    .img-reveal.active { opacity: 1; transform: scale(1); }
+
+    /* ── Filter buttons ── */
+    .filter-btn { transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    /* ── Table row hover ── */
+    tbody tr { transition: background-color 0.2s ease; }
+
+    /* ── Nav drawer ── */
+    #mega-menu { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+    #nav-backdrop { transition: opacity 0.35s ease; }
+
+    /* ── Custom Scrollbar ── */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #f1f5f9; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* ── Accordion details ── */
+    details summary::-webkit-details-marker { display: none; }
+    details summary { list-style: none; }
+    details[open] summary svg { transform: rotate(180deg); }
   </style>
 </head>
 <body class="font-sans text-slate-800 bg-white antialiased selection:bg-[#40C1BB]/20 selection:text-[#011221]" id="top">
@@ -298,7 +366,7 @@
           <p class="text-[#40C1BB] font-bold uppercase tracking-[0.2em] text-xs mb-3">2026 National Context</p>
           <h2 class="text-display-md md:text-display-lg font-black text-white uppercase tracking-tight mb-3">Why CAILI, Why Now</h2>
         </div>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 stagger-grid">
           <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
             <p class="text-4xl md:text-5xl font-black text-[#40C1BB]">92%</p>
             <p class="text-sm text-white/80 mt-2">of students engaging with AI in 2026</p>
@@ -483,7 +551,7 @@
         </div>
 
         <!-- Personas Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 stagger-grid">
           
           <!-- Persona 1: Civic Champion -->
           <div class="bg-white rounded-2xl p-6 shadow-card border border-sky-100 flex flex-col h-full hover:shadow-card-hover transition-shadow relative overflow-hidden">
@@ -793,7 +861,7 @@
         </div>
 
         <div class="mb-12">
-          <img src="caili1.jpeg" alt="CAILI AI Studio — community engaged innovation in action" class="w-full rounded-2xl shadow-card border border-slate-100">
+          <img src="caili1.jpeg" alt="CAILI AI Studio — community engaged innovation in action" class="w-full rounded-2xl shadow-card border border-slate-100 img-reveal">
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1193,11 +1261,11 @@
         </div>
 
         <div class="mb-12">
-          <img src="caili2.jpg" alt="CAILI AI Studio — responsible teaching and learning in practice" class="w-full rounded-2xl shadow-card border border-slate-100">
+          <img src="caili2.jpg" alt="CAILI AI Studio — responsible teaching and learning in practice" class="w-full rounded-2xl shadow-card border border-slate-100 img-reveal">
         </div>
 
         <!-- Four Lens Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 stagger-grid">
           <div class="bg-white rounded-2xl p-6 shadow-card border border-emerald-100 hover:-translate-y-1 transition-transform">
             <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5c4 0 7 2.5 7 6.5S16 18 12 19c-4-1-7-3.5-7-7.5S8 5 12 5Z"/></svg></div>
             <h3 class="font-bold text-slate-900 mb-2">Fairness &amp; Equity</h3>
@@ -1402,7 +1470,7 @@
           <p class="text-slate-600 mt-2">From the first faculty workshop in March 2023 through the third annual AI Summit in June 2026.</p>
         </div>
 
-        <div class="relative timeline-line ml-4 sm:ml-0">
+        <div class="relative timeline-line ml-4 sm:ml-0 timeline-section">
           <div class="relative pl-14 sm:pl-16 py-4">
             <div class="absolute left-[20px] top-6 w-3 h-3 bg-white border-2 border-[#40C1BB] rounded-full z-10"></div>
             <p class="text-xs font-bold text-[#40C1BB] uppercase tracking-widest mb-1">March 2023</p>
@@ -1629,7 +1697,7 @@
     navLinks.forEach(link => link.addEventListener('click', closeNav));
 
     // Scroll Reveal Animation
-    const revealElements = document.querySelectorAll('.reveal');
+    const revealElements = document.querySelectorAll('.reveal, .stagger-grid, .img-reveal, .timeline-section');
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1637,7 +1705,7 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12 });
 
     revealElements.forEach(el => revealObserver.observe(el));
 
